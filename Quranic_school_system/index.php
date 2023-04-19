@@ -61,7 +61,7 @@
       <div class="logo">
         
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.html"><img src="assets/img/Logo.png" alt="" class="img-fluid"></a>
+        <a href="index.html"><img src="assets\img\Screenshot_2023-04-18_011830-removebg-preview_1.png" alt="" class="img-fluid"></a>
       </div>
 
       
@@ -83,7 +83,7 @@
              </div>
           <h2>مرحبا بكم في اشبال الفتح </h2>
           <p>يَرۡفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُواْ مِنكُمۡ وَٱلَّذِينَ أُوتُواْ ٱلۡعِلۡمَ دَرَجَٰتٖۚ وَٱللَّهُ بِمَا تَعۡمَلُونَ خَبِيرٞ</p>
-          <a href="" class="btn-get-started ">المزيد</a>
+          <a href="about.html" class="btn-get-started ">المزيد</a>
         </div>
       </div>
     </div>
@@ -140,7 +140,6 @@
       </div> -->
     </section><!-- End Why Us Section -->
 
-    <!-- ======= Services Section ======= -->
     <section class="services">
       <div class="container">
 
@@ -181,7 +180,6 @@
 
       </div>
     </section><!-- End Services Section -->
-
     
 
     <!-- ======= Features Section ======= -->

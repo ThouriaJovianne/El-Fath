@@ -48,8 +48,6 @@
     <div class="container d-flex justify-content-between align-items-center">
       <nav id="navbar" class="navbar">
         <ul> 
-         
-         
           <li><a href="contact.html">تواصلوا معنا </a></li>
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a> -->
             <li><a href="team.html">فريقنا</a></li>
@@ -69,7 +67,7 @@
   </header><!-- End Header -->
   
   <!-- ======= Hero No Slider Section ======= -->
-  <div id="hero-no-slider" class="d-flex justify-cntent-center align-items-center">
+  <div id="hero2-no-slider" class="d-flex justify-cntent-center align-items-center">
         <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
     <!-- <div class="black-fill"><br /> <br /> -->
