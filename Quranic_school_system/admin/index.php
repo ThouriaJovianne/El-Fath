@@ -10,7 +10,7 @@ if (isset($_SESSION['admin_id']) &&
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Admin - Home</title>
+	<title>مشرف عام -الرئيسية</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="icon" href="../logo.png">
@@ -27,43 +27,43 @@ if (isset($_SESSION['admin_id']) &&
                <a href="teacher.php" 
                   class="col btn btn-dark m-2 py-3">
                  <i class="fa fa-user-md fs-1" aria-hidden="true"></i><br>
-                  Teachers
+                  الاساتذة
                </a> 
                <a href="" class="col btn btn-dark m-2 py-3">
                  <i class="fa fa-graduation-cap fs-1" aria-hidden="true"></i><br>
-                  Students
+                  التلاميذ
                </a> 
                <a href="" class="col btn btn-dark m-2 py-3">
                  <i class="fa fa-pencil-square fs-1" aria-hidden="true"></i><br>
-                  Registrar Office
+                  مكتب التسجيل 
                </a> 
                <a href="" class="col btn btn-dark m-2 py-3">
                  <i class="fa fa-cubes fs-1" aria-hidden="true"></i><br>
-                  Class
+                  القسم
                </a> 
                <a href="" class="col btn btn-dark m-2 py-3">
                  <i class="fa fa-columns fs-1" aria-hidden="true"></i><br>
-                  Section
+                  الطور
                </a> 
                <a href="" class="col btn btn-dark m-2 py-3">
                  <i class="fa fa-calendar fs-1" aria-hidden="true"></i><br>
-                  Schedule
+                  استعمال الزمن
                </a> 
                <a href="" class="col btn btn-dark m-2 py-3">
                  <i class="fa fa-book fs-1" aria-hidden="true"></i><br>
-                  Course
+                  الدروس
                </a> 
                <a href="" class="col btn btn-dark m-2 py-3">
                  <i class="fa fa-envelope fs-1" aria-hidden="true"></i><br>
-                  Message
+                  رسالة
                </a> 
                <a href="" class="col btn btn-primary m-2 py-3 col-5">
                  <i class="fa fa-cogs fs-1" aria-hidden="true"></i><br>
-                  Settings
+                  الاعدادات
                </a> 
                <a href="../logout.php" class="col btn btn-warning m-2 py-3 col-5">
                  <i class="fa fa-sign-out fs-1" aria-hidden="true"></i><br>
-                  Logout
+                  تسجيل الخروج
                </a> 
              </div>
          </div>
