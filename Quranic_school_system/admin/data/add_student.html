@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style1.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Responsive Regisration Form </title> 
+</head>
+<body>
+    <div class="container">
+        <header>اضافة تلميذ</header>
+         
+        <form action="#">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">المعلومات الشخصية</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>الاسم الكامل</label>
+                            <input type="text" placeholder="ادخل الاسم الكامل" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>تاريخ الميلاد</label>
+                            <input type="date" placeholder="ادخل تاريخ الميلاد" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>البريد الالكتروني</label>
+                            <input type="email" placeholder="ادخل البريد الالكتروني" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>رقم الهاتف</label>
+                            <input type="number" placeholder="ادخل رقم الهاتف" required>
+                        </div>
+                        <div class="input-field">
+                            <label> 2 رقم الهاتف</label>
+                            <input type="number" placeholder="ادخل رقم الهاتف " >
+                        </div>
+                        <div class="input-field">
+                            <label>الجنس</label>
+                            <select required>
+                                <option disabled selected>اختر الجنس</option>
+                                <option>ذكر</option>
+                                <option>انثى</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>العنوان </label>
+                            <input type="text" placeholder="ادخل عنوان المنزل  " >
+                        </div>
+                        <div class="input-field">
+                            <label>الحالة الصحية </label>
+                            <select required>
+                                <option disabled selected>اختر الحالة الصحية</option>
+                                <option>سليم</option>
+                                <option>غير سليم</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>في حالة غير سليم </label>
+                            <input type="text" placeholder="ادخل المرض   " >
+                        </div>
+
+
+                    <div class="input-field">
+                        <label>المستوى</label>
+                        <select required>
+                            <option disabled selected>اختر المستوى</option>
+                            <option>براعم</option>
+                            <option>ابتدائي</option>
+                            <option>متوسط</option>
+                            <option>ثانوي</option>
+                            <option>جامعي</option>
+                        </select>
+                    </div>
+
+                    </div>
+                    
+                        <button class="nextBtn">
+                            <span class="btnText">التالي</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                  
+                </div>
+                   
+                </div> 
+           
+
+                <div class="details family">
+                    <br>
+                    <span class="title">:المعلومات العائلية </span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>اسم الولي</label>
+                            <input type="text" placeholder="ادخل اسم الولي" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label> قرابته</label>
+                            <input type="text" placeholder="ادخل  قرابة الولي " required>
+                        </div>
+                        
+
+                        <div class="input-field">
+                            <label>الحالة الاجتماعية للوالدين</label>
+                            <select required>
+                                <option disabled selected> الحالة الاجتماعية للوالدين</option>
+                                <option>مطلقين</option>
+                                <option> متزوجين</option>
+                                <option> ارامل</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label> عدد افراد الاسرة</label>
+                            <input type="text" placeholder="ادخل  عدد افراد الاسرة" required>
+                        </div>
+                        <div class="input-field">
+                            <label> عددالعاملين </label>
+                            <input type="number" placeholder="ادخل عدد العاملين " >
+                            <br><br><br>
+                        </div>
+                        <div class="input-field">
+                            <label>  عدد المتمدرسين</label>
+                            <input type="number" placeholder="ادخل عدد المتمدرسين " >
+                            <br><br><br>
+                        </div>
+                       
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">السابق</span>
+                        </div>
+                        
+                        <button class="sumbit">
+                            <span class="btnText">تقديم </span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
