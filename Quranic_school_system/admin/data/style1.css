@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Poppins:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: #adacac;
+}
+
+
+.table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(240,240,240);
+    flex-wrap: wrap;
+}
+.table-header p{
+    color: #000000;
+
+
+}
+button{
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px;
+    color: #ffffff;
+} 
+.btn-get-started {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 50px;
+    transition: 0.5s;
+    line-height: 1;
+    margin: 10px;
+    color: #fff;
+    animation-delay: 0.8s;
+    border: 2px solid #c4a268;
+  }
+
+td button:nth-child(1){
+    background-color: darkorange;
+}
+.add_new{
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: darkorange;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    border-radius: 50px;
+    transition: 0.5s;
+    line-height: 1;
+    margin: 10px;
+    color: #fff;
+    animation-delay: 0.8s;
+    border: 2px solid  ;
+    text-decoration: none;
+
+
+}
+.add_new:hover{
+    background: rgb(252, 203, 160);
+  color: #fff;
+  text-decoration: none;
+}
+
+input{
+    padding: 10px 20px;
+    margin: 0px 10px;
+    outline: none;
+    border: 1px solid darkorange ;
+     border-radius: 6px;
+     color: darkorange;
+
+
+}
+::placeholder{
+    color: darkblue;
+
+}
+.table_section{
+    height: 650px;
+    overflow: auto;
+
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+thead th {
+    position: sticky;
+    top: 0;
+    background-color:rgb(1, 1, 79);
+    color:white;
+    font-size: 15px;
+
+}
+th,
+td {
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    font-size: 14px;
+    word-break: break-all;
+    text-align: center;
+}
+tr :hover td{
+  color:darkorange ;
+  cursor: pointer;
+  background-color: #f6f9fc;
+
+}
+.header_fixed {
+    max-height: 100vh;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #dddddd;
+    
+}
+
+.header_fixed thead th {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    color: #e6e7e8;
+    font-size: 15px;
+}
+
+
+
+td img {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 5px solid #e6e7e8;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(odd) {
+    background-color: #edeef1;
+}
+
+tr:hover td {
+    color: darkorange;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+td button {
+    border: none;
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: #e6e7e8;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+} 
+/* ================forms=========== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f6f8fa;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    max-width: 700px;
+    width: 80%;
+    height: 100%;
+    min-height: 700px;
+    background: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1),
+                0px 5px 12px -2px rgba(0, 0, 0, 0.1),
+                0px 18px 36px -6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 10px;
+}
+
+.container .title{
+    padding: 25px;
+    background: #f6f8fa;
+}
+
+.container .title p{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container .title p::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background: linear-gradient(to right, #f46d33, #ef6e29);
+}
+
+.user_details{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 25px;
+}
+
+.user_details .input_box{
+    width: calc(100% / 2 - 20px);
+    margin: 0 0 12px 0;
+}
+
+.input_box label{
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input_box label::after{
+    content: " *";
+    color: rgb(255, 119, 0);
+}
+
+.input_box input{
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 15px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    background-color: #f6f8fa;
+    font-family: 'Poppins', sans-serif;
+    transition: all 120ms ease-out 0s;
+}
+
+
+.input_box input:focus,
+.input_box input:valid{
+    box-shadow: 0px 0px 0px 2px #AC8ECE;
+}
+
+form .gender{
+    padding: 0px 25px;
+}
+
+.gender span.gender_title{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.gender .category{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.gender .category label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.gender .category label .dot{
+    height: 18px;
+    width: 18px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#radio_1:checked ~ .category label .one,
+#radio_2:checked ~ .category label .two,
+#radio_3:checked ~ .category label .three{
+    border-color: #d9d9d9;
+    background:darkorange;
+}
+
+.gender input{
+    display: none;
+}
+
+.reg_btn{
+    padding: 25px;
+    margin: 15px 0;
+    margin-top: 100px;
+    margin-bottom: 0;
+}
+
+.reg_btn input{
+    height: 45px;
+    width: 25%;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(to right, #f6862a, #f16d07);
+    border-radius: 5px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.reg_btn input:hover{
+    background: linear-gradient(to right, #ee8733, #f76c15);
+}
+
+@media screen and (max-width: 584px){
+
+    .user_details{
+        max-height: 340px;
+        overflow-y: scroll;
+    }
+
+    .user_details::-webkit-scrollbar{
+        width: 0;
+    }
+
+    .user_details .input_box{
+        width: 100%;
+    }
+
+    .gender .category{
+        width: 100%;
+    }
+
+}
+
+
+@media screen and (max-width: 419px){
+    .gender .category{
+        flex-direction: column;
+    }   
+}
+/* students form */
+
+.details-family{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 25px;
+}
+
+.details-family .input_box{
+    width: calc(100% / 2 - 20px);
+    margin: 0 0 12px 0;
+}
