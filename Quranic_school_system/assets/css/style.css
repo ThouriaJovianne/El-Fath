@@ -33,7 +33,7 @@ background-attachment: fixed;
   border:#d2d2a7  ;
   width: 90%;
   margin-top: 400PX;
-  background: #cacac1 ; 
+  background: #cac6c1 ; 
   padding: 10px;
   border-radius: 10px;
  
@@ -1641,7 +1641,7 @@ section {
 
 .contact .info-box i {
   font-size: 32px;
-  color: #68A4C4;
+  color: #eb8e3c;
   border-radius: 50%;
   padding: 8px;
   border: 2px dotted #a2cce3;
@@ -1683,7 +1683,7 @@ section {
 .contact .php-email-form .sent-message {
   display: none;
   color: #fff;
-  background: #18d26e;
+  background: #d28e18;
   text-align: center;
   padding: 15px;
   font-weight: 600;
@@ -1703,7 +1703,7 @@ section {
   width: 24px;
   height: 24px;
   margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
+  border: 3px solid #d28818;
   border-top-color: #eee;
   animation: animate-loading 1s linear infinite;
 }
