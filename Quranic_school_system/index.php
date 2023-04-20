@@ -49,19 +49,19 @@
       <nav id="navbar" class="navbar">
         <ul> 
          
-         
+         <li><a href="login.php" class="btn-get-started ">تسجيل الدخول</a></li>
           <li><a href="contact.html">تواصلوا معنا </a></li>
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a> -->
             <li><a href="team.html">فريقنا</a></li>
             <li><a href="services.html">خدماتنا</a></li>
             <li><a href="about.html">حول المسجد</a></li>
-            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="index.php">الرئيسية</a></li>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       <div class="logo">
         
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.html"><img src="assets\img\Screenshot_2023-04-18_011830-removebg-preview_1.png" alt="" class="img-fluid"></a>
+        <a href="index.php"><img src="assets\img\Screenshot_2023-04-18_011830-removebg-preview_1.png" alt="" class="img-fluid"></a>
       </div>
 
       
