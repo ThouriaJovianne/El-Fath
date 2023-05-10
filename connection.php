@@ -1,6 +1,6 @@
 <?php
 
-    $database= new mysqli("localhost","root","","ashbal_el-feth");
+    $database= new mysqli("localhost","root","","ashbal_el-fath");
 
     if ( $database->connect_error ){
 

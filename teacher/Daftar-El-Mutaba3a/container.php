@@ -18,10 +18,25 @@ include "../../connection.php";
 </head>
 
 <body>
+    <?php
+    session_start();
+    if (isset($_SESSION['student_id'])) {
+        $student_id = $_SESSION['student_id'];
 
+    } else {
+        echo "The student_id is not set in the session.";
+    }
+    $query = "SELECT * FROM student WHERE student_id = ?";
+    $stmt = mysqli_prepare($database, $query);
+    mysqli_stmt_bind_param($stmt, 's', $student_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
+    $student_name=$row['student_name'];
+    ?>
   <div class="container">
     <div class="intro">
-      <h3 style="font-weight: 100; text-align: center;">: (ة)انجاز الطالب</h3>
+      <h3 style="font-weight: 100; text-align: center;">   انجاز الطالب :<?php echo"$student_name"; ?></h3>
     </div>
     <form method="post" action="action.php">
 
