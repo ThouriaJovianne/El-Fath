@@ -150,6 +150,7 @@
                         </form>
                         
                     </td>
+                    <!-- date showed -->
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
                             تاريخ اليوم
@@ -170,7 +171,7 @@
 
                 </tr>
                
-                
+                <!-- number of students -->
                 <tr>
                     <td colspan="4" style="padding-top:10px;">
                         <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)"><?php echo "(".$list11->num_rows.") إجمالي الطلاب "; ?></p>
@@ -270,6 +271,7 @@
                                 for ( $x=0; $x<$result->num_rows;$x++){
                                     $row=$result->fetch_assoc();
                                     $student_id=$row["student_id"];
+                                    $_SESSION['student_id'] = $student_id;
                                     $student_name=$row["student_name"];
                                     $student_email=$row["student_email"];
                                     $student_homeaddress=$row["student_homeaddress"];
@@ -291,7 +293,11 @@
                                         <td >
                                         <div style="display:flex;justify-content: center;">
                                         
-                                        <a href="Daftar-El-Mutaba3a/container.php" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-edit"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">دفتر المتابعة</font></button></a>
+                                        <a href="Daftar-El-Mutaba3a/container.php" class="btn-primary-soft btn button-icon btn-edit"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;">
+                                        
+                                        <font class="tn-in-text">دفتر المتابعة</font>
+                                       
+                                        </a>
                                        
                                         </div>
                                         </td>
