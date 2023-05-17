@@ -51,17 +51,17 @@
         <ul> 
          
          
-          <li><a href="contact.html">تواصلوا معنا </a></li>
+          <li><a href="login.php">تواصلوا معنا </a></li>
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a> -->
-            <li><a href="team.html">فريقنا</a></li>
-            <li><a href="services.html">خدماتنا</a></li>
-            <li><a href="about.html">حول المسجد</a></li>
-            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="team.php">فريقنا</a></li>
+            <li><a href="services.php">خدماتنا</a></li>
+            <li><a href="about.php">حول المسجد</a></li>
+            <li><a href="index.php">الرئيسية</a></li>
         <i class="bi bi-list mobile-nav-toggle"> </i>
       </nav><!-- .navbar -->
       <div class="logo">
         <!-- Uncomment below if you prefer to use an image logo -->
-         <a href="index.html"><img src="assets/img/Logo.png" alt="" class="img-fluid"></a>
+         <a href="index.php"><img src="assets/img/Logo.png" alt="" class="img-fluid"></a>
       </div>
 
       
