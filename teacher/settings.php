@@ -243,7 +243,8 @@
 
             echo '
             <div id="popup1" class="overlay">
-                    <div class="popup">
+                    <div class="popup" style="overflow-y: scroll;
+                    max-height: 600px;">
                     <center>
                         <h2></h2>
                         <a class="close" href="settings.php">&times;</a>
@@ -494,14 +495,14 @@
                         <center>
                         <br><br><br><br>
                             <h2>!تم التعديل بنجاح</h2>
-                            <a class="close" href="settings.php">&times;</a>
+                            
                             <div class="content">
-                                إذا غييرت بريدك الإلكتروني يرجى تسجيل الخروج وإعادة تسجيل الدخول بالبريد الإلكتروني الجديد
+                                إذا غيرت بريدك الإلكتروني يرجى تسجيل الخروج وإعادة تسجيل الدخول بالبريد الإلكتروني الجديد
                                 
                             </div>
                             <div style="display: flex;justify-content: center;">
                             
-                            <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;نعم&nbsp;&nbsp;</font></button></a>
+                            
                             <a href="../logout.php" class="non-style-link"><button  class="btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;تسجيل الخروج&nbsp;&nbsp;</font></button></a>
 
                             </div>

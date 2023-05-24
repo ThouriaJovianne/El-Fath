@@ -55,8 +55,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       <div class="logo">
-         <div class="logo">
-+        
+         <div class="logo">     
       
          <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
       </div>
