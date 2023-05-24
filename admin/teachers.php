@@ -340,8 +340,9 @@ if($_GET){
 
 
             echo '
-            <div id="popup1" class="overlay">
-                    <div class="popup">
+            <div id="popup1" class="overlay" >
+                    <div class="popup" style="overflow-y: scroll;
+                    max-height: 600px;">
                     <center>
                         <h2></h2>
                         <a class="close" href="teachers.php">&times;</a>
