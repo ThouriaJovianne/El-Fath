@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Sessions</title>
+    <title>الواجبات المنزلية</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -20,8 +20,6 @@
 </head>
 <body>
     <?php
-
-    //learn from w3schools.com
 
     session_start();
 
@@ -36,24 +34,15 @@
         header("location: ../login.php");
     }
     
-
-    //import database
     include("../connection.php");
-    $userrow = $database->query("select * from patient where pemail='$useremail'");
+    $userrow = $database->query("select * from student where student_email='$useremail'");
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
-
-
-    //echo $userid;
-    //echo $username;
+    $userid= $userfetch["student_id"];
+    $username=$userfetch["student_name"];
     
-    date_default_timezone_set('Asia/Kolkata');
+    date_default_timezone_set('Africa/Algiers');
 
     $today = date('Y-m-d');
-
-
- //echo $userid;
  ?>
  <div class="container">
      <div class="menu">
@@ -78,30 +67,33 @@
                  </table>
                  </td>
              </tr>
-             <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-home " >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Home</p></a></div></a>
+
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-home" >
+                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">الرئيسية</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor">
-                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">All Doctors</p></a></div>
+                        <a href="followup-notebook.php" class="non-style-link-menu"><div><p class="menu-text"> دفتر المتابعة</p></a></div>
                     </td>
                 </tr>
                 
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-session menu-active menu-icon-session-active">
-                        <a href="schedule.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                    <td class="menu-btn menu-icon-appoinment menu-active menu-icon-appoinment-active">
+                        <a href="assignment.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">الواجبات المنزلية  </p></div></a>
                     </td>
                 </tr>
+                
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
+                        <a href="done-assignment.php" class="non-style-link-menu"><div><p class="menu-text">الواجبات التامة  </p></div></a>
                     </td>
                 </tr>
+               
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">الإعدادات</p></a></div>
                     </td>
                 </tr>
                 
@@ -109,21 +101,23 @@
         </div>
         <?php
 
-                $sqlmain= "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduledate>='$today'  order by schedule.scheduledate asc";
+                $sqlmain= "select * from assignment where assignment.student_id=$userid and assignment.assignment_enddate<='$today' order by assignment.assignment_startdate asc";
                 $sqlpt1="";
                 $insertkey="";
                 $q='';
-                $searchtype="All";
+                
                         if($_POST){
-                        //print_r($_POST);
                         
                         if(!empty($_POST["search"])){
                             
                             $keyword=$_POST["search"];
-                            $sqlmain= "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduledate>='$today' and (doctor.docname='$keyword' or doctor.docname like '$keyword%' or doctor.docname like '%$keyword' or doctor.docname like '%$keyword%' or schedule.title='$keyword' or schedule.title like '$keyword%' or schedule.title like '%$keyword' or schedule.title like '%$keyword%' or schedule.scheduledate like '$keyword%' or schedule.scheduledate like '%$keyword' or schedule.scheduledate like '%$keyword%' or schedule.scheduledate='$keyword' )  order by schedule.scheduledate asc";
-                            //echo $sqlmain;
+                            $sqlmain= "select * from assignment where assignment.student_id=$userid";
+                            // and assignment.assignment_startdate>='$today' and 
+                            // (assignment.assignment_title='$keyword' or assignment.assignment_title like '$keyword%' or assignment.assignment_title like '%$keyword' or assignment.assignment_title like '%$keyword%' or 
+                            // assignment.assignment_startdate like '$keyword%' or assignment.assignment_startdate like '%$keyword' or assignment.assignment_startdate like '%$keyword%' or assignment.assignment_startdate='$keyword' or 
+                            // assignment.assignment_enddate like '$keyword%' or assignment.assignment_enddate like '%$keyword' or assignment.assignment_enddate like '%$keyword%' or assignment.assignment_enddate='$keyword' )  order by assignment.assignment_startdate asc";
                             $insertkey=$keyword;
-                            $searchtype="Search Result : ";
+                            
                             $q='"';
                         }
 
@@ -138,40 +132,25 @@
         <div class="dash-body">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
-                    <td width="13%" >
-                    <a href="schedule.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
-                    </td>
+                    <?php include("back.php"); ?>
                     <td >
                             <form action="" method="post" class="header-search">
 
-                                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Doctor name or Email or Date (YYYY-MM-DD)" list="doctors" value="<?php  echo $insertkey ?>">&nbsp;&nbsp;
+                                        <input type="search" name="search" class="input-text header-searchbar" placeholder="ابحث عن عنوان واجب منزلي أو تاريخه" list="assignments" value="<?php  echo $insertkey ?>">&nbsp;&nbsp;
                                         
                                         <?php
-                                            echo '<datalist id="doctors">';
-                                            $list11 = $database->query("select DISTINCT * from  doctor;");
-                                            $list12 = $database->query("select DISTINCT * from  schedule GROUP BY title;");
+                                        //     echo '<datalist id="assignments">';
                                             
+                                        //     $list12 = $database->query("select DISTINCT * from  assignment GROUP BY title;");
 
-                                            
-
-
-                                            for ($y=0;$y<$list11->num_rows;$y++){
-                                                $row00=$list11->fetch_assoc();
-                                                $d=$row00["docname"];
+                                        //     for ($y=0;$y<$list12->num_rows;$y++){
+                                        //         $row00=$list12->fetch_assoc();
+                                        //         $d=$row00["assignment_title"];
                                                
-                                                echo "<option value='$d'><br/>";
-                                               
-                                            };
+                                        //         echo "<option value='$d'><br/>";
+                                        //                                                  };
 
-
-                                            for ($y=0;$y<$list12->num_rows;$y++){
-                                                $row00=$list12->fetch_assoc();
-                                                $d=$row00["title"];
-                                               
-                                                echo "<option value='$d'><br/>";
-                                                                                         };
-
-                                        echo ' </datalist>';
+                                        // echo ' </datalist>';
             ?>
                                         
                                 
@@ -179,19 +158,7 @@
                                         </form>
                     </td>
                     <td width="15%">
-                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Today's Date
-                        </p>
-                        <p class="heading-sub12" style="padding: 0;margin: 0;">
-                            <?php 
-
-                                
-                                echo $today;
-
-                                
-
-                        ?>
-                        </p>
+                        <?php include("../date.php"); ?>
                     </td>
                     <td width="10%">
                         <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
@@ -203,7 +170,7 @@
                 
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;" >
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)"><?php echo $searchtype." Sessions"."(".$result->num_rows.")"; ?> </p>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)"><?php echo " جميع الواجبات المنزلية "."(".$result->num_rows.")"; ?> </p>
                         <p class="heading-main12" style="margin-left: 45px;font-size:22px;color:rgb(49, 49, 49)"><?php echo $q.$insertkey.$q ; ?> </p>
                     </td>
                     
@@ -232,8 +199,8 @@
                                     <img src="../img/notfound.svg" width="25%">
                                     
                                     <br>
-                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Sessions &nbsp;</font></button>
+                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">!لم نستطع إيجاد أي شيء متعلق بكلمة بحثك</p>
+                                    <a class="non-style-link" href="assignment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; أظهر جميع الواجبات المنزلية &nbsp;</font></button>
                                     </a>
                                     </center>
                                     <br><br><br><br>
@@ -242,7 +209,7 @@
                                     
                                 }
                                 else{
-                                    //echo $result->num_rows;
+                        
                                 for ( $x=0; $x<($result->num_rows);$x++){
                                     echo "<tr>";
                                     for($q=0;$q<3;$q++){
@@ -250,13 +217,16 @@
                                         if (!isset($row)){
                                             break;
                                         };
-                                        $scheduleid=$row["scheduleid"];
-                                        $title=$row["title"];
-                                        $docname=$row["docname"];
-                                        $scheduledate=$row["scheduledate"];
-                                        $scheduletime=$row["scheduletime"];
+                                        $assignment_id=$row["assignment_id"];
+                                        $assignment_title=$row["assignment_title"];
+                                        $assignment_startdate=$row["assignment_startdate"];
+                                        $assignment_enddate=$row["assignment_enddate"];
+                                        $startsurah = $row["startsurah_id"];
+                                        $startaya = $row["startaya"];
+                                        $endsurah = $row["startsurah_id"];
+                                        $endaya = $row["endaya"];
 
-                                        if($scheduleid==""){
+                                        if($assignment_id==""){
                                             break;
                                         }
 
@@ -266,16 +236,29 @@
                                                 
                                                     <div style="width:100%">
                                                             <div class="h1-search">
-                                                                '.substr($title,0,21).'
+                                                                '.substr($assignment_title,0,21).'
                                                             </div><br>
                                                             <div class="h3-search">
-                                                                '.substr($docname,0,30).'
+                                                                '.substr($assignment_startdate,0,10).'
                                                             </div>
                                                             <div class="h4-search">
-                                                                '.$scheduledate.'<br>Starts: <b>@'.substr($scheduletime,0,5).'</b> (24h)
-                                                            </div>
+                                                                '.substr($assignment_enddate,0,10).'
+                                                            </div><br>
+                                                            <div class="h3-search">
+                                                            '.substr($startsurah,0,21).'
+                                                        </div>
+                                                        <div class="h4-search">
+                                                            '.substr($startaya,0,10).'
+                                                        </div><br>
+                                                        <div class="h3-search">
+                                                            '.substr($endsurah,0,10).'
+                                                        </div>
+                                                        <div class="h4-search">
+                                                        '.substr($endaya,0,21).'
+                                                    </div>
+
                                                             <br>
-                                                            <a href="booking.php?id='.$scheduleid.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Book Now</font></button></a>
+                                                            <a href="done-assignments.php?id='.$assignment_id.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">تم الواجب المنزلي</font></button></a>
                                                     </div>
                                                             
                                                 </div>
@@ -284,28 +267,6 @@
                                     }
                                     echo "</tr>";
                                     
-                                    
-                                    // echo '<tr>
-                                    //     <td> &nbsp;'.
-                                    //     substr($title,0,30)
-                                    //     .'</td>
-                                        
-                                    //     <td style="text-align:center;">
-                                    //         '.substr($scheduledate,0,10).' '.substr($scheduletime,0,5).'
-                                    //     </td>
-                                    //     <td style="text-align:center;">
-                                    //         '.$nop.'
-                                    //     </td>
-
-                                    //     <td>
-                                    //     <div style="display:flex;justify-content: center;">
-                                        
-                                    //     <a href="?action=view&id='.$scheduleid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
-                                    //    &nbsp;&nbsp;&nbsp;
-                                    //    <a href="?action=drop&id='.$scheduleid.'&name='.$title.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel Session</font></button></a>
-                                    //     </div>
-                                    //     </td>
-                                    // </tr>';
                                     
                                 }
                             }

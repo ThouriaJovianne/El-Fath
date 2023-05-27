@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 01:28 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Hôte : 127.0.0.1
+-- Généré le : sam. 27 mai 2023 à 23:06
+-- Version du serveur : 10.4.28-MariaDB
+-- Version de PHP : 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ashbal_el-fath`
+-- Base de données : `ashbal_el-fath`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Structure de la table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -33,7 +33,7 @@ CREATE TABLE `admin` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `admin`
+-- Déchargement des données de la table `admin`
 --
 
 INSERT INTO `admin` (`aemail`, `apassword`) VALUES
@@ -42,7 +42,7 @@ INSERT INTO `admin` (`aemail`, `apassword`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appointment`
+-- Structure de la table `appointment`
 --
 
 CREATE TABLE `appointment` (
@@ -54,7 +54,7 @@ CREATE TABLE `appointment` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `appointment`
+-- Déchargement des données de la table `appointment`
 --
 
 INSERT INTO `appointment` (`appoid`, `pid`, `apponum`, `scheduleid`, `appodate`) VALUES
@@ -63,7 +63,47 @@ INSERT INTO `appointment` (`appoid`, `pid`, `apponum`, `scheduleid`, `appodate`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `class`
+-- Structure de la table `assignment`
+--
+
+CREATE TABLE `assignment` (
+  `assignment_id` int(11) NOT NULL,
+  `student_id` varchar(255) NOT NULL,
+  `assignment_title` varchar(255) DEFAULT NULL,
+  `assignment_startdate` date NOT NULL,
+  `assignment_enddate` int(11) NOT NULL,
+  `startsurah_id` int(10) NOT NULL,
+  `startaya` int(10) NOT NULL,
+  `endsurah_id` int(10) NOT NULL,
+  `endaya` int(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Déchargement des données de la table `assignment`
+--
+
+INSERT INTO `assignment` (`assignment_id`, `student_id`, `assignment_title`, `assignment_startdate`, `assignment_enddate`, `startsurah_id`, `startaya`, `endsurah_id`, `endaya`) VALUES
+(1, '1', 'Test Session', '2050-01-01', 0, 0, 0, 0, 0),
+(2, '1', '1', '2022-06-10', 0, 0, 0, 0, 0),
+(3, '1', '12', '2022-06-10', 0, 0, 0, 0, 0),
+(4, '1', '1', '2022-06-10', 0, 0, 0, 0, 0),
+(5, '1', '1', '2022-06-10', 0, 0, 0, 0, 0),
+(6, '1', '12', '2022-06-10', 0, 0, 0, 0, 0),
+(7, '1', '1', '2022-06-24', 0, 0, 0, 0, 0),
+(8, '1', '12', '2022-06-10', 0, 0, 0, 0, 0),
+(9, '9', 'fdgfgd', '2023-06-02', 2023, 0, 0, 0, 0),
+(10, '5', 'dfggdfgd', '2023-05-28', 2023, 0, 0, 0, 0),
+(13, '13', 'hello', '2023-05-28', 2023, 0, 0, 0, 0),
+(12, '5', '?????', '2023-05-28', 2023, 0, 0, 0, 0),
+(14, '13', 'helllllo', '2023-06-10', 2023, 0, 0, 0, 0),
+(15, '13', 'kjhghhgh', '2023-06-02', 2023, 0, 0, 0, 0),
+(16, '2', 'hello', '2023-06-11', 2023, 0, 0, 0, 0),
+(17, '12', 'al fath', '2023-05-28', 2023, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `class`
 --
 
 CREATE TABLE `class` (
@@ -73,7 +113,7 @@ CREATE TABLE `class` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `class`
+-- Déchargement des données de la table `class`
 --
 
 INSERT INTO `class` (`class_id`, `class_name`, `class_scholaryear`) VALUES
@@ -82,7 +122,7 @@ INSERT INTO `class` (`class_id`, `class_name`, `class_scholaryear`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `educationallevel`
+-- Structure de la table `educationallevel`
 --
 
 CREATE TABLE `educationallevel` (
@@ -91,7 +131,7 @@ CREATE TABLE `educationallevel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `educationallevel`
+-- Déchargement des données de la table `educationallevel`
 --
 
 INSERT INTO `educationallevel` (`educationallevel_id`, `educationallevel_name`) VALUES
@@ -104,7 +144,7 @@ INSERT INTO `educationallevel` (`educationallevel_id`, `educationallevel_name`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation`
+-- Structure de la table `evaluation`
 --
 
 CREATE TABLE `evaluation` (
@@ -117,7 +157,7 @@ CREATE TABLE `evaluation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `evaluation`
+-- Déchargement des données de la table `evaluation`
 --
 
 INSERT INTO `evaluation` (`student_id`, `surah_id`, `lastaya`, `evaluation_mark`, `evaluation_kind`, `evaluation_id`) VALUES
@@ -133,7 +173,7 @@ INSERT INTO `evaluation` (`student_id`, `surah_id`, `lastaya`, `evaluation_mark`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jobs`
+-- Structure de la table `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -142,7 +182,7 @@ CREATE TABLE `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `jobs`
+-- Déchargement des données de la table `jobs`
 --
 
 INSERT INTO `jobs` (`job_id`, `job_name`) VALUES
@@ -153,36 +193,7 @@ INSERT INTO `jobs` (`job_id`, `job_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `schedule`
---
-
-CREATE TABLE `schedule` (
-  `scheduleid` int(11) NOT NULL,
-  `docid` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `scheduledate` date DEFAULT NULL,
-  `scheduletime` time DEFAULT NULL,
-  `nop` int(4) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `schedule`
---
-
-INSERT INTO `schedule` (`scheduleid`, `docid`, `title`, `scheduledate`, `scheduletime`, `nop`) VALUES
-(1, '1', 'Test Session', '2050-01-01', '18:00:00', 50),
-(2, '1', '1', '2022-06-10', '20:36:00', 1),
-(3, '1', '12', '2022-06-10', '20:33:00', 1),
-(4, '1', '1', '2022-06-10', '12:32:00', 1),
-(5, '1', '1', '2022-06-10', '20:35:00', 1),
-(6, '1', '12', '2022-06-10', '20:35:00', 1),
-(7, '1', '1', '2022-06-24', '20:36:00', 1),
-(8, '1', '12', '2022-06-10', '13:33:00', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `scholaryear`
+-- Structure de la table `scholaryear`
 --
 
 CREATE TABLE `scholaryear` (
@@ -192,7 +203,7 @@ CREATE TABLE `scholaryear` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `scholaryear`
+-- Déchargement des données de la table `scholaryear`
 --
 
 INSERT INTO `scholaryear` (`scholaryear_id`, `scholaryear_name`, `scholaryear_educationallevel`) VALUES
@@ -215,7 +226,7 @@ INSERT INTO `scholaryear` (`scholaryear_id`, `scholaryear_name`, `scholaryear_ed
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student`
+-- Structure de la table `student`
 --
 
 CREATE TABLE `student` (
@@ -240,19 +251,20 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `student`
+-- Déchargement des données de la table `student`
 --
 
 INSERT INTO `student` (`student_id`, `student_name`, `student_email`, `student_password`, `student_birthdate`, `student_educationallevel`, `student_scholaryear`, `student_class`, `student_teacher`, `student_homeaddress`, `student_parentname`, `student_parentrelation`, `student_parentjob`, `student_phone`, `student_familymembers`, `student_familyworkers`, `student_familyscholars`, `student_remark`) VALUES
 (4, 'vfdfd', 'thouria.tahari12@gmail.com', '123', '0000-00-00', 1, 1, 1, 8, 'kjhk', '', '', 1, '5858', 0, 0, 0, NULL),
 (5, 'hjhj', 'thouria.tahari551@gmail.com', '123', '0000-00-00', 1, 1, 1, 9, 'kjhk', '', '', 1, '5858', 0, 0, 0, NULL),
 (6, 'hjhj', 'thouria.taharikjk1@gmail.com', '123', '0000-00-00', 1, 1, 1, 8, 'kjhk', '', '', 1, '5858', 0, 0, 0, NULL),
-(9, 'منال', 'thouria.taHGHGHHari@gmail.com', '123', '0000-00-00', 1, 5, 1, 9, 'GFFGFH', '', '', 3, '522525', 0, 0, 0, NULL);
+(9, 'منال', 'thouria.taHGHGHHari@gmail.com', '123', '0000-00-00', 1, 5, 1, 9, 'GFFGFH', '', '', 3, '522525', 0, 0, 0, NULL),
+(10, 'منال', 'thouria.tahari22@gmail.com', '123', '0000-00-00', 1, 1, 1, 8, 'fsdf', '', '', 1, '5753', 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `surah`
+-- Structure de la table `surah`
 --
 
 CREATE TABLE `surah` (
@@ -262,7 +274,7 @@ CREATE TABLE `surah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `surah`
+-- Déchargement des données de la table `surah`
 --
 
 INSERT INTO `surah` (`surah_id`, `surah_name`, `surah_ayanumber`) VALUES
@@ -384,7 +396,7 @@ INSERT INTO `surah` (`surah_id`, `surah_name`, `surah_ayanumber`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teacher`
+-- Structure de la table `teacher`
 --
 
 CREATE TABLE `teacher` (
@@ -401,7 +413,7 @@ CREATE TABLE `teacher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `teacher`
+-- Déchargement des données de la table `teacher`
 --
 
 INSERT INTO `teacher` (`teacher_id`, `teacher_name`, `teacher_email`, `teacher_password`, `teacher_homeaddress`, `teacher_job`, `teacher_phone`, `teacher_educationallevel`, `teacher_scholaryear`, `teacher_class`) VALUES
@@ -411,7 +423,7 @@ INSERT INTO `teacher` (`teacher_id`, `teacher_name`, `teacher_email`, `teacher_p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `webuser`
+-- Structure de la table `webuser`
 --
 
 CREATE TABLE `webuser` (
@@ -420,7 +432,7 @@ CREATE TABLE `webuser` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `webuser`
+-- Déchargement des données de la table `webuser`
 --
 
 INSERT INTO `webuser` (`email`, `usertype`) VALUES
@@ -434,20 +446,21 @@ INSERT INTO `webuser` (`email`, `usertype`) VALUES
 ('thouria.taHGHGHHari@gmail.com', 'p'),
 ('thouria.tahari12@gmail.com', 'p'),
 ('thouria.tahari551@gmail.com', 'p'),
-('thouria.taharikjk1@gmail.com', 'p');
+('thouria.taharikjk1@gmail.com', 'p'),
+('thouria.tahari22@gmail.com', 'p');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `admin`
+-- Index pour la table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`aemail`);
 
 --
--- Indexes for table `appointment`
+-- Index pour la table `appointment`
 --
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`appoid`),
@@ -455,20 +468,26 @@ ALTER TABLE `appointment`
   ADD KEY `scheduleid` (`scheduleid`);
 
 --
--- Indexes for table `class`
+-- Index pour la table `assignment`
+--
+ALTER TABLE `assignment`
+  ADD PRIMARY KEY (`assignment_id`);
+
+--
+-- Index pour la table `class`
 --
 ALTER TABLE `class`
   ADD PRIMARY KEY (`class_id`),
   ADD KEY `class_scholaryear` (`class_scholaryear`);
 
 --
--- Indexes for table `educationallevel`
+-- Index pour la table `educationallevel`
 --
 ALTER TABLE `educationallevel`
   ADD PRIMARY KEY (`educationallevel_id`);
 
 --
--- Indexes for table `evaluation`
+-- Index pour la table `evaluation`
 --
 ALTER TABLE `evaluation`
   ADD PRIMARY KEY (`evaluation_id`),
@@ -476,27 +495,20 @@ ALTER TABLE `evaluation`
   ADD KEY `surah_id` (`surah_id`);
 
 --
--- Indexes for table `jobs`
+-- Index pour la table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`job_id`);
 
 --
--- Indexes for table `schedule`
---
-ALTER TABLE `schedule`
-  ADD PRIMARY KEY (`scheduleid`),
-  ADD KEY `docid` (`docid`);
-
---
--- Indexes for table `scholaryear`
+-- Index pour la table `scholaryear`
 --
 ALTER TABLE `scholaryear`
   ADD PRIMARY KEY (`scholaryear_id`),
   ADD KEY `scholaryear_educationallevel` (`scholaryear_educationallevel`);
 
 --
--- Indexes for table `student`
+-- Index pour la table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`),
@@ -507,13 +519,13 @@ ALTER TABLE `student`
   ADD KEY `student_parentjob` (`student_parentjob`);
 
 --
--- Indexes for table `surah`
+-- Index pour la table `surah`
 --
 ALTER TABLE `surah`
   ADD PRIMARY KEY (`surah_id`);
 
 --
--- Indexes for table `teacher`
+-- Index pour la table `teacher`
 --
 ALTER TABLE `teacher`
   ADD PRIMARY KEY (`teacher_id`),
@@ -523,100 +535,100 @@ ALTER TABLE `teacher`
   ADD KEY `teacher_class` (`teacher_class`);
 
 --
--- Indexes for table `webuser`
+-- Index pour la table `webuser`
 --
 ALTER TABLE `webuser`
   ADD PRIMARY KEY (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `appointment`
+-- AUTO_INCREMENT pour la table `appointment`
 --
 ALTER TABLE `appointment`
   MODIFY `appoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `class`
+-- AUTO_INCREMENT pour la table `assignment`
+--
+ALTER TABLE `assignment`
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT pour la table `class`
 --
 ALTER TABLE `class`
   MODIFY `class_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `educationallevel`
+-- AUTO_INCREMENT pour la table `educationallevel`
 --
 ALTER TABLE `educationallevel`
   MODIFY `educationallevel_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `evaluation`
+-- AUTO_INCREMENT pour la table `evaluation`
 --
 ALTER TABLE `evaluation`
   MODIFY `evaluation_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
--- AUTO_INCREMENT for table `jobs`
+-- AUTO_INCREMENT pour la table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `job_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `schedule`
---
-ALTER TABLE `schedule`
-  MODIFY `scheduleid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `scholaryear`
+-- AUTO_INCREMENT pour la table `scholaryear`
 --
 ALTER TABLE `scholaryear`
   MODIFY `scholaryear_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `student`
+-- AUTO_INCREMENT pour la table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `student_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `surah`
+-- AUTO_INCREMENT pour la table `surah`
 --
 ALTER TABLE `surah`
   MODIFY `surah_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
--- AUTO_INCREMENT for table `teacher`
+-- AUTO_INCREMENT pour la table `teacher`
 --
 ALTER TABLE `teacher`
   MODIFY `teacher_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `class`
+-- Contraintes pour la table `class`
 --
 ALTER TABLE `class`
   ADD CONSTRAINT `class_ibfk_1` FOREIGN KEY (`class_scholaryear`) REFERENCES `scholaryear` (`scholaryear_id`);
 
 --
--- Constraints for table `evaluation`
+-- Contraintes pour la table `evaluation`
 --
 ALTER TABLE `evaluation`
   ADD CONSTRAINT `evaluation_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`),
   ADD CONSTRAINT `evaluation_ibfk_2` FOREIGN KEY (`surah_id`) REFERENCES `surah` (`surah_id`);
 
 --
--- Constraints for table `scholaryear`
+-- Contraintes pour la table `scholaryear`
 --
 ALTER TABLE `scholaryear`
   ADD CONSTRAINT `scholaryear_ibfk_1` FOREIGN KEY (`scholaryear_educationallevel`) REFERENCES `educationallevel` (`educationallevel_id`);
 
 --
--- Constraints for table `student`
+-- Contraintes pour la table `student`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`student_teacher`) REFERENCES `teacher` (`teacher_id`),
@@ -626,7 +638,7 @@ ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_5` FOREIGN KEY (`student_parentjob`) REFERENCES `jobs` (`job_id`);
 
 --
--- Constraints for table `teacher`
+-- Contraintes pour la table `teacher`
 --
 ALTER TABLE `teacher`
   ADD CONSTRAINT `teacher_ibfk_1` FOREIGN KEY (`teacher_job`) REFERENCES `jobs` (`job_id`),

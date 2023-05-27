@@ -39,17 +39,17 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from patient where pemail='$useremail'");
+    $userrow = $database->query("select * from student where student_email='$useremail'");
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+    $userid= $userfetch["student_id"];
+    $username=$userfetch["student_name"];
 
 
     //echo $userid;
     //echo $username;
 
 
-    $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  patient.pid=$userid ";
+    $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,teacher.teacher_name,student.student_name,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join student on student.student_id=appointment.pid inner join teacher on schedule.docid=teacher.teacher_id  where  student.student_id=$userid ";
 
     if($_POST){
         //print_r($_POST);
