@@ -76,6 +76,14 @@
                         <a href="student.php" class="non-style-link-menu  non-style-link-menu-active"><div><p class="menu-text">طلابي</p></a></div>
                     </td>
                 </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-schedule">
+                        <a href="assignment.php" class="non-style-link-menu">
+                            <div>
+                            <p class="menu-text">الواجبات المنزلية لطلابي</p>
+                        </a></div>
+                    </td>
+                </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings   ">
                         <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">الإعدادات</p></a></div>
@@ -152,17 +160,7 @@
                     </td>
                     <!-- date showed -->
                     <td width="15%">
-                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            تاريخ اليوم
-                        </p>
-                        <p class="heading-sub12" style="padding: 0;margin: 0;">
-                            <?php 
-                        date_default_timezone_set('Africa/Algiers');
-
-                        $date = date('Y-m-d');
-                        echo $date;
-                        ?>
-                        </p>
+                        <?php include("../date.php");?>
                     </td>
                     <td width="10%">
                         <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>

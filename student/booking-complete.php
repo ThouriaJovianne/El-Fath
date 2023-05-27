@@ -1,7 +1,5 @@
 <?php
 
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -15,13 +13,11 @@
         header("location: ../login.php");
     }
     
-
-    //import database
     include("../connection.php");
-    $userrow = $database->query("select * from patient where pemail='$useremail'");
+    $userrow = $database->query("select * from student where student_email='$useremail'");
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+    $userid= $userfetch["student_id"];
+    $username=$userfetch["student_name"];
 
 
     if($_POST){

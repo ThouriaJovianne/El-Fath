@@ -9,7 +9,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/Logo2.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 
@@ -107,7 +107,7 @@
                     $_SESSION['user']=$email;
                     $_SESSION['usertype']='p';
                     
-                    header('location: students/index.php');
+                    header('location: student/index.php');
 
                 }else{
                     $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">بيانات الاعتماد غير صحيحة: البريد الإلكتروني أو كلمة المرور غير صالحة</label>';

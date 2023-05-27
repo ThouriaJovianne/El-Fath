@@ -61,58 +61,44 @@
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
-                <tr>
-                    <td style="padding:10px" colspan="2">
-                        <table border="0" class="profile-container">
-                            <tr>
-                                <td width="30%" style="padding-left:20px">
-                                    <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
-                                </td>
-                                <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">
-                                        <?php echo substr($username, 0, 13) ?>
-                                    </p>
-                                    <p class="profile-subtitle">
-                                        <?php echo substr($useremail, 0, 22) ?>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <a href="../logout.php"><input type="button" value="تسجيل الخروج"
-                                            class="logout-btn btn-primary-soft btn"></a>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
+
+
+            <?php include("profile.php"); ?>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-dashbord menu-active menu-icon-dashbord-active">
                         <a href="index.php" class="non-style-link-menu non-style-link-menu-active">
                             <div>
                                 <p class="menu-text">الرئيسية</p>
                         </a>
-        </div></a>
-        </td>
-        </tr>
+                    </div></a>
+                    </td>
+                </tr>
 
-        <tr class="menu-row">
-            <td class="menu-btn menu-icon-patient">
-                <a href="student.php" class="non-style-link-menu">
-                    <div>
-                        <p class="menu-text">طلابي</p>
-                </a>
-    </div>
-    </td>
-    </tr>
-    <tr class="menu-row">
-        <td class="menu-btn menu-icon-settings">
-            <a href="settings.php" class="non-style-link-menu">
-                <div>
-                    <p class="menu-text">الإعدادات</p>
-            </a></div>
-        </td>
-    </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-patient">
+                        <a href="student.php" class="non-style-link-menu">
+                            <div>
+                            <p class="menu-text">طلابي</p>
+                            </a>
+                            </div>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-schedule">
+                        <a href="assignment.php" class="non-style-link-menu">
+                            <div>
+                            <p class="menu-text">الواجبات المنزلية لطلابي</p>
+                        </a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-settings">
+                        <a href="settings.php" class="non-style-link-menu">
+                            <div>
+                                <p class="menu-text">الإعدادات</p>
+                        </a></div>
+                    </td>
+                </tr>
 
     </table>
     </div>
@@ -140,10 +126,10 @@
                         echo $today;
 
 
-                        $studentrow = $database->query("select  * from  student;");
+                        $studentrow = $database->query("select  * from  student where student_teacher = $userid;");
                         $teacherrow = $database->query("select  * from  teacher;");
                         $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                        $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+                        $assignmentrow = $database->query("select  * from  assignment where assignment_enddate='$today';");
 
 
                         ?>
@@ -210,7 +196,7 @@
                                                     <?php echo $studentrow->num_rows ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
-                                                    جميع الطلبة &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    عدد طلابي&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </div>
                                             <div class="btn-icon-back dashboard-icons"

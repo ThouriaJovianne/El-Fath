@@ -83,6 +83,14 @@
                         <a href="student.php" class="non-style-link-menu"><div><p class="menu-text">طلابي</p></a></div>
                     </td>
                 </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-schedule">
+                        <a href="assignment.php" class="non-style-link-menu">
+                            <div>
+                            <p class="menu-text">الواجبات المنزلية لطلابي</p>
+                        </a></div>
+                    </td>
+                </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings  menu-active menu-icon-settings-active">
                         <a href="settings.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">الإعدادات</p></a></div>
@@ -119,7 +127,7 @@
                                 $studentrow = $database->query("select  * from  student;");
                                 $teacherrow = $database->query("select  * from  teacher;");
                                 $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+                                $assignmentrow = $database->query("select  * from  assignment where assignment_enddate='$today';");
 
 
                                 ?>

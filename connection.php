@@ -1,6 +1,6 @@
 <?php
 
-    $database= new mysqli("localhost","root","","masjid");
+    $database= new mysqli("localhost","root","","ashbal_el-fath");
 
     if ( $database->connect_error ){
 
