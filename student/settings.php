@@ -10,7 +10,7 @@
         
 
 
-    <title>Settings</title>
+    <title>الإعدادات</title>
     <style>
         .dashbord-tables{
             animation: transitionIn-Y-over 0.5s;
@@ -26,9 +26,8 @@
     
 </head>
 <body>
-    <?php
 
-    //learn from w3schools.com
+    <?php
 
     session_start();
 
@@ -42,14 +41,12 @@
     }else{
         header("location: ../login.php");
     }
-    
 
-    //import database
     include("../connection.php");
-    $userrow = $database->query("select * from patient where pemail='$useremail'");
+    $userrow = $database->query("select * from student where student_email='$useremail'");
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+    $userid= $userfetch["student_id"];
+    $username=$userfetch["student_name"];
 
     ?>
     <div class="container">
@@ -63,13 +60,13 @@
                                     <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title"><?php echo substr($username,0,13)  ?>..</p>
+                                    <p class="profile-title"><?php echo substr($username,0,13)  ?></p>
                                     <p class="profile-subtitle"><?php echo substr($useremail,0,22)  ?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                <a href="../logout.php" ><input type="button" value="تسجيل الخروج" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -77,29 +74,30 @@
                 
                 </tr>
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-home " >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Home</p></a></div></a>
+                    <td class="menu-btn menu-icon-home" >
+                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">الرئيسية</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor">
-                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">All Doctors</p></a></div>
+                        <a href="followup-notebook.php" class="non-style-link-menu"><div><p class="menu-text"> دفتر المتابعة</p></a></div>
                     </td>
                 </tr>
                 
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                    <td class="menu-btn menu-icon-appoinment">
+                        <a href="assignment.php" class="non-style-link-menu"><div><p class="menu-text">الواجبات المنزلية  </p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
+                        <a href="done-assignment.php" class="non-style-link-menu"><div><p class="menu-text">الواجبات التامة  </p></div></a>
                     </td>
                 </tr>
+               
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-settings  menu-active menu-icon-settings-active">
-                        <a href="settings.php" class="non-style-link-menu  non-style-link-menu-active"><div><p class="menu-text">Settings</p></a></div>
+                    <td class="menu-btn menu-icon-settings menu-active menu-icon-settings-active">
+                        <a href="settings.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">الإعدادات</p></a></div>
                     </td>
                 </tr>
                 
@@ -110,32 +108,19 @@
                         
                         <tr >
                             
-                        <td width="13%" >
-                    <a href="settings.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
-                    </td>
+                    <?php include("back.php"); ?>
                     <td>
-                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Settings</p>
+                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">الإعدادات</p>
                                            
                     </td>
                     
                             <td width="15%">
-                                <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                                    Today's Date
-                                </p>
-                                <p class="heading-sub12" style="padding: 0;margin: 0;">
-                                    <?php 
-                                date_default_timezone_set('Asia/Kolkata');
-        
-                                $today = date('Y-m-d');
-                                echo $today;
-
-
-                                $patientrow = $database->query("select  * from  patient;");
-                                $doctorrow = $database->query("select  * from  doctor;");
+                            <?php 
+                                include("../date.php");
+                                $studentrow = $database->query("select  * from  student;");
+                                $teacherrow = $database->query("select  * from  teacher;");
                                 $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
-
-
+                                $assignmentrow = $database->query("select  * from  assignment where assignment_enddate='$today';");
                                 ?>
                                 </p>
                             </td>
@@ -162,11 +147,11 @@
                                         <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
                                         <div>
                                                 <div class="h1-dashboard">
-                                                    Account Settings  &nbsp;
+                                                    تعديل بيانات الحساب  &nbsp;
 
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px;">
-                                                    Edit your Account Details & Change Password
+                                                    عدل بيانات حسابك و/أو غير كلمة المرور
                                                 </div>
                                         </div>
                                                 
@@ -188,11 +173,11 @@
                                         <div class="btn-icon-back dashboard-icons-setting " style="background-image: url('../img/icons/view-iceblue.svg');"></div>
                                         <div>
                                                 <div class="h1-dashboard" >
-                                                    View Account Details
+                                                    إظهار بيانات الحساب
                                                     
                                                 </div><br>
                                                 <div class="h3-dashboard"  style="font-size: 15px;">
-                                                    View Personal information About Your Account
+                                                    أظهر المعلومات الشخصية حول حسابك
                                                 </div>
                                         </div>
                                                 
@@ -205,26 +190,6 @@
                                 <td colspan="4">
                                     <p style="font-size: 5px">&nbsp;</p>
                                 </td>
-                            </tr>
-                            <tr>
-                            <td style="width: 25%;">
-                                    <a href="?action=drop&id=<?php echo $userid.'&name='.$username ?>" class="non-style-link">
-                                    <div  class="dashboard-items setting-tabs"  style="padding:20px;margin:auto;width:95%;display: flex;">
-                                        <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/patients-hover.svg');"></div>
-                                        <div>
-                                                <div class="h1-dashboard" style="color: #ff5050;">
-                                                    Delete Account
-                                                    
-                                                </div><br>
-                                                <div class="h3-dashboard"  style="font-size: 15px;">
-                                                    Will Permanently Remove your Account
-                                                </div>
-                                        </div>
-                                                
-                                    </div>
-                                    </a>
-                                </td>
-                                
                             </tr>
                         </table>
                     </center>
@@ -239,47 +204,25 @@
         
         $id=$_GET["id"];
         $action=$_GET["action"];
-        if($action=='drop'){
-            $nameget=$_GET["name"];
-            echo '
-            <div id="popup1" class="overlay">
-                    <div class="popup">
-                    <center>
-                        <h2>Are you sure?</h2>
-                        <a class="close" href="settings.php">&times;</a>
-                        <div class="content">
-                            You want to delete Your Account<br>('.substr($nameget,0,40).').
-                            
-                        </div>
-                        <div style="display: flex;justify-content: center;">
-                        <a href="delete-account.php?id='.$id.'" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Yes&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
-                        <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;No&nbsp;&nbsp;</font></button></a>
 
-                        </div>
-                    </center>
-            </div>
-            </div>
-            ';
-        }elseif($action=='view'){
-            $sqlmain= "select * from patient where pid='$id'";
+        if($action=='view'){
+            $sqlmain= "select * from student where student_id='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $name=$row["pname"];
-            $email=$row["pemail"];
-            $address=$row["paddress"];
-            
+            $name=$row["student_name"];
+            $email=$row["student_email"];
+            $address=$row["student_homeaddress"];
+            $phone = $row["student_phone"];
+            $birthdate = $row["student_birthdate"];
            
-            $dob=$row["pdob"];
-            $nic=$row['pnic'];
-            $tele=$row['ptel'];
+
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
-                        <h2></h2>
                         <a class="close" href="settings.php">&times;</a>
                         <div class="content">
-                            eDoc Web App<br>
+                            موقع مسجد الفتح<br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
@@ -287,14 +230,14 @@
                         
                             <tr>
                                 <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">View Details.</p><br><br>
+                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">إظهار البيانات</p><br><br>
                                 </td>
                             </tr>
                             
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Name: </label>
+                                    <label for="name" class="form-label">:اسم ولقب الطالب</label>
                                 </td>
                             </tr>
                             <tr>
@@ -305,7 +248,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Email" class="form-label">Email: </label>
+                                    <label for="Email" class="form-label">:الحساب الالكتروني </label>
                                 </td>
                             </tr>
                             <tr>
@@ -315,27 +258,17 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">NIC: </label>
+                                    <label for="Tele" class="form-label">:رقم الهاتف </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                '.$nic.'<br><br>
+                                '.$phone.'<br><br>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Tele" class="form-label">Telephone: </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                '.$tele.'<br><br>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Address: </label>
+                                    <label for="spec" class="form-label">:عنوان المنزل </label>
                                     
                                 </td>
                             </tr>
@@ -346,25 +279,21 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Date of Birth: </label>
+                                    <label for="spec" class="form-label">:تاريخ الميلاد </label>
                                     
                                 </td>
                             </tr>
                             <tr>
                             <td class="label-td" colspan="2">
-                            '.$dob.'<br><br>
+                            '.$birthdate.'<br><br>
                             </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="settings.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
-                                
-                                    
+                                    <a href="settings.php"><input type="button" value="حسنا" class="login-btn btn-primary-soft btn" ></a>
                                 </td>
                 
                             </tr>
-                           
-
                         </table>
                         </div>
                     </center>
@@ -373,174 +302,202 @@
             </div>
             ';
         }elseif($action=='edit'){
-            $sqlmain= "select * from patient where pid='$id'";
+            
+            $sqlmain= "select * from student where student_id='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $name=$row["pname"];
-            $email=$row["pemail"];
-           
-            
-            
-            $address=$row["paddress"];
-            $nic=$row['pnic'];
-            $tele=$row['ptel'];
-
-            $error_1=$_GET["error"];
-                $errorlist= array(
-                    '1'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Already have an account for this Email address.</label>',
-                    '2'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Password Conformation Error! Reconform Password</label>',
-                    '3'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;"></label>',
-                    '4'=>"",
-                    '0'=>'',
-
-                );
-
-            if($error_1!='4'){
-                    echo '
+            $name=$row["student_name"];
+            $email=$row["student_email"];
+            $parentjob=$row["student_parentjob"];
+            $homeaddress=$row['student_homeaddress'];
+            $phone=$row['student_phone'];
+                
+            $job_result= $database->query("select job_name from jobs where job_id='$parentjob'");
+            $job_array= $job_result->fetch_assoc();
+            $job_name=$job_array["job_name"];
+    
+                $error_1=$_GET["error"];
+                    $errorlist= array(
+                        '1'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">هناك مسبقا حساب لهذا البريد الالكتروني</label>',
+                        '2'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">خطأ في تأكيد كلمة المرور! الرجاء إعادة تأكيد كلمة المرور</label>',
+                        '3'=>'',
+                        '4'=>"",
+                        '0'=>'',
+    
+                    );
+    
+                if($error_1!='4'){
+                        echo '
+                        <div id="popup1" class="overlay">
+                                <div class="popup">
+                                <center>
+                                
+                                    <a class="close" href="settings.php">&times;</a> 
+                                    <div style="display: flex;justify-content: center;">
+                                    <div class="abc">
+                                    <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
+                                    <tr>
+                                            <td class="label-td" colspan="2">'.
+                                                $errorlist[$error_1]
+                                            .'</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">تعديل بيانات الطالب</p>
+                                            رقمك التعريفي : '.$id.'<br><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <form action="edit-student.php" method="POST" class="add-new-form">
+                                                <label for="email" class="form-label">البريد الإلكتروني </label>
+                                                <input type="hidden" value="'.$id.'" name="id">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                            <input type="hidden" name="oldemail" value="'.$email.'" >
+                                            <input type="email" name="email" class="input-text" placeholder="البريد الإلكتروني" value="'.$email.'" required><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            
+                                            <td class="label-td" colspan="2">
+                                                <label for="name" class="form-label">: اسم ولقب الطالب </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <input type="text" name="name" class="input-text" placeholder=" : اسم ولقب الطالب" value="'.$name.'" required><br>
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <label for="homeaddress" class="form-label">: عنوان المنزل</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <input type="text" name="homeaddress" class="input-text" placeholder="أدخل عنوان منزلك الجديد" value="'.$homeaddress.'" required><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <label for="phone" class="form-label">رقم الهاتف </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <input type="tel" name="phone" class="input-text" placeholder="أدخل رقم هاتفك الجديد" value="'.$phone.'" required><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <label for="parentjob" class="form-label">: مهنة الولي (Current'.$job_name.')</label>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <select name="parentjob" id="" class="box">';
+                                                    
+                    
+                                                    $list11 = $database->query("select  * from  jobs;");
+                    
+                                                    for ($y=0;$y<$list11->num_rows;$y++){
+                                                        $row00=$list11->fetch_assoc();
+                                                        $sn=$row00["job_name"];
+                                                        $id00=$row00["job_id"];
+                                                        echo "<option value=".$id00.">$sn</option><br/>";
+                                                    };
+                    
+                    
+                    
+                                                    
+                                    echo     '       </select><br><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <label for="password" class="form-label">كلمة المرور الحالية</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <input type="password" name="password" class="input-text" placeholder="أدخل كلمة المرور الحالية" required><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        <td class="label-td" colspan="2">
+                                            <label for="password" class="form-label">كلمة المرور الجديدة</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label-td" colspan="2">
+                                            <input type="password" name="password" class="input-text" placeholder="أدخل كلمة المرور الجديدة" required><br>
+                                        </td>
+                                    </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <label for="confirm_password" class="form-label">تأكيد كلمة المرور الجديدة</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label-td" colspan="2">
+                                                <input type="password" name="confirm_password" class="input-text" placeholder="أكد كلمة المرور الجديدة" required><br>
+                                            </td>
+                                        </tr>
+                                        
+                            
+                                        <tr>
+                                            <td colspan="2">
+                                                
+                                                <input type="reset" value="إعادة ملىءالصفحة" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a href="settings.php"><input type="button" value="إلغاء" class="login-btn btn-primary-soft btn" ></a>
+                                                <input type="submit" value="حفظ" class="login-btn btn-primary btn">
+                                            </td>
+                            
+                                        </tr>
+                                    
+                                        </form>
+                                        </tr>
+                                    </table>
+                                    </div>
+                                    </div>
+                                </center>
+                                <br><br>
+                        </div>
+                        </div>
+                        ';
+            }else{
+                echo '
                     <div id="popup1" class="overlay">
                             <div class="popup">
                             <center>
-                            
-                                <a class="close" href="settings.php">&times;</a> 
+                            <br><br><br><br>
+                                <h2>!تم التعديل بنجاح</h2>
+                                
+                                <div class="content">
+                                    إذا غيرت بريدك الإلكتروني يرجى تسجيل الخروج وإعادة تسجيل الدخول بالبريد الإلكتروني الجديد
+                                    
+                                </div>
                                 <div style="display: flex;justify-content: center;">
-                                <div class="abc">
-                                <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
-                                <tr>
-                                        <td class="label-td" colspan="2">'.
-                                            $errorlist[$error_1]
-                                        .'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Edit User Account Details.</p>
-                                        User ID : '.$id.' (Auto Generated)<br><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <form action="edit-user.php" method="POST" class="add-new-form">
-                                            <label for="Email" class="form-label">Email: </label>
-                                            <input type="hidden" value="'.$id.'" name="id00">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                        <input type="hidden" name="oldemail" value="'.$email.'" >
-                                        <input type="email" name="email" class="input-text" placeholder="Email Address" value="'.$email.'" required><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td class="label-td" colspan="2">
-                                            <label for="name" class="form-label">Name: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="text" name="name" class="input-text" placeholder="Doctor Name" value="'.$name.'" required><br>
-                                        </td>
-                                        
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="nic" class="form-label">NIC: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="text" name="nic" class="input-text" placeholder="NIC Number" value="'.$nic.'" required><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="Tele" class="form-label">Telephone: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="tel" name="Tele" class="input-text" placeholder="Telephone Number" value="'.$tele.'" required><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="spec" class="form-label">Address</label>
-                                            
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                        <input type="text" name="address" class="input-text" placeholder="Address" value="'.$address.'" required><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="password" class="form-label">Password: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="password" name="password" class="input-text" placeholder="Defind a Password" required><br>
-                                        </td>
-                                    </tr><tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="cpassword" class="form-label">Conform Password: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="password" name="cpassword" class="input-text" placeholder="Conform Password" required><br>
-                                        </td>
-                                    </tr>
-                                    
-                        
-                                    <tr>
-                                        <td colspan="2">
-                                            <input type="reset" value="Reset" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        
-                                            <input type="submit" value="Save" class="login-btn btn-primary btn">
-                                        </td>
-                        
-                                    </tr>
                                 
-                                    </form>
-                                    </tr>
-                                </table>
+                                
+                                <a href="../logout.php" class="non-style-link"><button  class="btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;تسجيل الخروج&nbsp;&nbsp;</font></button></a>
+    
                                 </div>
-                                </div>
+                                <br><br>
                             </center>
-                            <br><br>
                     </div>
                     </div>
-                    ';
-        }else{
-            echo '
-                <div id="popup1" class="overlay">
-                        <div class="popup">
-                        <center>
-                        <br><br><br><br>
-                            <h2>Edit Successfully!</h2>
-                            <a class="close" href="settings.php">&times;</a>
-                            <div class="content">
-                                If You change your email also Please logout and login again with your new email
-                                
-                            </div>
-                            <div style="display: flex;justify-content: center;">
-                            
-                            <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
-                            <a href="../logout.php" class="non-style-link"><button  class="btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;Log out&nbsp;&nbsp;</font></button></a>
-
-                            </div>
-                            <br><br>
-                        </center>
-                </div>
-                </div>
-    ';
-
-
-
-        }; }
-
+        ';
+    
+    
+    
+            }; }
     }
         ?>
 

@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/Logo2.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -24,7 +24,7 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -43,24 +43,24 @@
   <header id="header" class="fixed-top d-flex align-items-center ">
     <div class="container d-flex justify-content-between align-items-center">
       <nav id="navbar" class="navbar">
-        <ul>
-
-
-          <li><a href="login.php">سجل الدخول </a></li>
-          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a> -->
-          <li><a href="team.php">فريقنا</a></li>
-          <li><a href="services.php">خدماتنا</a></li>
-          <li><a href="about.php">حول المسجد</a></li>
-          <li><a href="index.php">الرئيسية</a></li>
-          <i class="bi bi-list mobile-nav-toggle"></i>
+        <ul> 
+         
+         
+ <li><a href="login.php">سجل الدخول </a></li>
+           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a> -->
+            <li><a href="team.php">فريقنا</a></li>
+            <li><a href="services.php">خدماتنا</a></li>
+            <li><a href="about.php">حول المسجد</a></li>
+            <li><a href="index.php">الرئيسية</a></li>
+        <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       <div class="logo">
-        <div class="logo">
-
-          <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
-        </div>
+         <div class="logo">     
+      
+         <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
       </div>
-      <i class="bi bi-list mobile-nav-toggle"></i>
+      </div>
+        <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
     </div>

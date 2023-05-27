@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Sessions</title>
+    <title>الواجبات التامة</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -20,8 +20,6 @@
 </head>
 <body>
     <?php
-
-    //learn from w3schools.com
 
     session_start();
 
@@ -35,27 +33,19 @@
     }else{
         header("location: ../login.php");
     }
-    
 
-    //import database
     include("../connection.php");
-    $userrow = $database->query("select * from patient where pemail='$useremail'");
+    $userrow = $database->query("select * from student where student_email='$useremail'");
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
-
-
-    //echo $userid;
-    //echo $username;
+    $userid= $userfetch["student_id"];
+    $username=$userfetch["student_name"];
     
 
 
-    date_default_timezone_set('Asia/Kolkata');
+    date_default_timezone_set('Africa/Algiers');
 
     $today = date('Y-m-d');
 
-
- //echo $userid;
  ?>
  <div class="container">
      <div class="menu">
@@ -74,36 +64,39 @@
                          </tr>
                          <tr>
                              <td colspan="2">
-                                 <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                 <a href="../logout.php" ><input type="button" value="تسجيل الخروج" class="logout-btn btn-primary-soft btn"></a>
                              </td>
                          </tr>
                  </table>
                  </td>
              </tr>
-             <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-home " >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Home</p></a></div></a>
+
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-home menu-activث" >
+                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">الرئيسية</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor">
-                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">All Doctors</p></a></div>
+                        <a href="followup-notebook.php" class="non-style-link-menu"><div><p class="menu-text"> دفتر المتابعة</p></a></div>
                     </td>
                 </tr>
                 
                 <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-session menu-active menu-icon-session-active">
-                        <a href="schedule.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Scheduled Sessions</p></div></a>
-                    </td>
-                </tr>
-                <tr class="menu-row" >
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
+                        <a href="assignment.php" class="non-style-link-menu"><div><p class="menu-text">الواجبات المنزلية  </p></div></a>
                     </td>
                 </tr>
+
+                <tr class="menu-row" >
+                    <td class="menu-btn menu-icon-appoinment menu-icon-appoinment-active">
+                        <a href="done-assignment.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">الواجبات التامة  </p></div></a>
+                    </td>
+                </tr>
+               
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">الإعدادات</p></a></div>
                     </td>
                 </tr>
                 
@@ -113,40 +106,38 @@
         <div class="dash-body">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
-                    <td width="13%" >
-                    <a href="schedule.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
-                    </td>
+                <?php include("back.php"); ?>
                     <td >
                             <form action="schedule.php" method="post" class="header-search">
 
                                         <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Doctor name or Email or Date (YYYY-MM-DD)" list="doctors" >&nbsp;&nbsp;
                                         
                                         <?php
-                                            echo '<datalist id="doctors">';
-                                            $list11 = $database->query("select DISTINCT * from  doctor;");
-                                            $list12 = $database->query("select DISTINCT * from  schedule GROUP BY title;");
+                                        //     echo '<datalist id="doctors">';
+                                           
+                                        //     $list12 = $database->query("select DISTINCT * from  schedule GROUP BY title;");
                                             
 
                                             
 
 
-                                            for ($y=0;$y<$list11->num_rows;$y++){
-                                                $row00=$list11->fetch_assoc();
-                                                $d=$row00["docname"];
+                                        //     for ($y=0;$y<$list11->num_rows;$y++){
+                                        //         $row00=$list11->fetch_assoc();
+                                        //         $d=$row00["docname"];
                                                
-                                                echo "<option value='$d'><br/>";
+                                        //         echo "<option value='$d'><br/>";
                                                
-                                            };
+                                        //     };
 
 
-                                            for ($y=0;$y<$list12->num_rows;$y++){
-                                                $row00=$list12->fetch_assoc();
-                                                $d=$row00["title"];
+                                        //     for ($y=0;$y<$list12->num_rows;$y++){
+                                        //         $row00=$list12->fetch_assoc();
+                                        //         $d=$row00["title"];
                                                
-                                                echo "<option value='$d'><br/>";
-                                                                                         };
+                                        //         echo "<option value='$d'><br/>";
+                                        //                                                  };
 
-                                        echo ' </datalist>';
+                                        // echo ' </datalist>';
             ?>
                                         
                                 
@@ -154,19 +145,7 @@
                                         </form>
                     </td>
                     <td width="15%">
-                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Today's Date
-                        </p>
-                        <p class="heading-sub12" style="padding: 0;margin: 0;">
-                            <?php 
-
-                                
-                                echo $today;
-
-                                
-
-                        ?>
-                        </p>
+                        <?php include("../date.php"); ?>
                     </td>
                     <td width="10%">
                         <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
@@ -205,8 +184,7 @@
                                     $id=$_GET["id"];
 
                                     $sqlmain= "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduleid=$id  order by schedule.scheduledate desc";
-
-                                    //echo $sqlmain;
+                                    
                                     $result= $database->query($sqlmain);
                                     $row=$result->fetch_assoc();
                                     $scheduleid=$row["scheduleid"];
