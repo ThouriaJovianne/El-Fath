@@ -35,7 +35,7 @@
 
 <body>
     <?php
-    
+
     session_start();
 
     if (isset($_SESSION["user"])) {
@@ -44,7 +44,6 @@
         } else {
             $useremail = $_SESSION["user"];
         }
-
     } else {
         header("location: ../login.php");
     }
@@ -79,8 +78,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="../logout.php"><input type="button" value="تسجيل الخروج"
-                                            class="logout-btn btn-primary-soft btn"></a>
+                                    <a href="../logout.php"><input type="button" value="تسجيل الخروج" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                         </table>
@@ -150,8 +148,7 @@
                     </p>
                 </td>
                 <td width="10%">
-                    <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img
-                            src="../img/calendar.svg" width="100%"></button>
+                    <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                 </td>
 
 
@@ -171,8 +168,7 @@
                                         .بإمكانك رؤية جميع طلبة قسمك , تعديل في دفتر المتابعة لكل طالب
                                         <br><br>
                                     </p>
-                                    <a href="student.php" class="non-style-link"><button class="btn-primary btn"
-                                            style="width:30%">إظهار جميع طلابي</button></a>
+                                    <a href="student.php" class="non-style-link"><button class="btn-primary btn" style="width:30%">إظهار جميع طلابي</button></a>
                                     <br>
                                     <br>
                                 </td>
@@ -203,8 +199,7 @@
                                 <tr>
 
                                     <td style="width: 25%;">
-                                        <div class="dashboard-items"
-                                            style="padding:20px;margin:auto;width:95%;display: flex;">
+                                        <div class="dashboard-items" style="padding:20px;margin:auto;width:95%;display: flex;">
                                             <div>
                                                 <div class="h1-dashboard">
                                                     <?php echo $studentrow->num_rows ?>
@@ -213,8 +208,7 @@
                                                     جميع الطلبة &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </div>
-                                            <div class="btn-icon-back dashboard-icons"
-                                                style="background-image: url('../img/icons/patients-hover.svg');"></div>
+                                            <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -235,7 +229,7 @@
 
 
                 </td>
-                
+
             </tr>
         </table>
         </td>

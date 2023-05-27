@@ -190,7 +190,7 @@
                         <div class="abc scroll">
                             <!-- ///////////////*********************//////////////////// */ -->
                             <?php
-                            include 'Pagination.php';
+                            include '../Pagination.php';
                             $records_per_page = 1;
                             $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
                             $result = $database->query($sqlmain);
@@ -279,7 +279,10 @@
                             echo '</div>';
                             ?>
 
-                        </div>
+                                             </div>
+                        </td>
+                        </tr>
+                        </table>
     </div>
     <?php
 

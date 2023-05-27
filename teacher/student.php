@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/pagination.css">
         
     <title>طلابي</title>
     <style>
@@ -215,42 +216,41 @@
                    <td colspan="4">
                        <center>
                         <div class="abc scroll">
-                        <table width="93%" class="sub-table scrolldown"  style="border-spacing:0;">
-                        <thead>
-                        <tr>
-                                <th class="table-headin">
-                                    
-                                
-                                اسم الطالب
-                                
-                                </th>
-                                <th class="table-headin">
-                                    البريد الالكتروني
-                                </th>
-                                <th class="table-headin">
-                                    
-                                    رقم الهاتف
-                                    
-                                </th>
-                                <th class="table-headin">
-                                    
-                                    عنوان المنزل
-                                    
-                                </th>
-                                <th class="table-headin">
-                                    
-                                    الحفظ والمراجعة
-                                    
-                                </tr>
-                        </thead>
-                        <tbody>
-                        
-                            <?php
+                             <?php
+                            // $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
 
-                                
-                                $result= $database->query($sqlmain);
-                               
-                                if($result->num_rows==0){
+                            include '../Pagination.php';
+
+                            $records_per_page = 1; // Replace with the desired number of records per page
+
+                            // Display pagination links
+                            $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
+                            // Instantiate the Pagination class
+
+
+                            // Get the current page
+
+                            // Calculate the offset for SQL query
+
+
+                            // Execute the modified query
+                            $result = $database->query($sqlmain);
+                            $pagination = new Pagination($result->num_rows, $records_per_page);
+                            $current_page = $pagination->getCurrentPage();
+                            $offset = ($current_page - 1) * $records_per_page;
+                            $sqlmain = $sqlmain . " LIMIT $offset, $records_per_page";
+                                                        echo '<table width="93%" class="sub-table scrolldown pagination" border="0">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th class="table-headin">اسم الطالب</th>';
+                            echo '<th class="table-headin">البريد الالكتروني</th>';
+                            echo '<th class="table-headin">رقم الهاتف</th>';
+                            echo '<th class="table-headin">عنوان المنزل</th>';
+                            echo '<th class="table-headin">الحفظ والمراجعة</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody>';
+                                                          if($result->num_rows==0){
                                     echo '<tr>
                                     <td colspan="4">
                                     <br><br><br><br>
@@ -268,8 +268,12 @@
                                     
                                 }
                                 else{
-                                for ( $x=0; $x<$result->num_rows;$x++){
-                                    $row=$result->fetch_assoc();
+                                                                    $starting_record = ($current_page - 1) * $records_per_page;
+                                $ending_record = $starting_record + $records_per_page - 1;
+
+                                // Move the result pointer to the starting record
+                                $result->data_seek($starting_record);
+                                for ($x = $starting_record; $x <= $ending_record && $row = $result->fetch_assoc(); $x++){
                                     $student_id=$row["student_id"];
                                     $_SESSION['student_id'] = $student_id;
                                     $student_name=$row["student_name"];
@@ -304,21 +308,19 @@
                                     </tr>';
                                     
                                 }
-                            }
-                                 
-                            ?>
- 
-                            </tbody>
+                            } 
+                            echo '</tbody>';
+                            echo '</table>';
 
-                        </table>
-                        </div>
-                        </center>
-                   </td> 
-                </tr>
-                       
-                        
-                        
-            </table>
+                            // Display pagination links
+                            $page_url = $_SERVER['PHP_SELF']; // Change this to the URL of the page
+                            echo '<div class="pagination-links">';
+                            echo $pagination->getPreviousLink($page_url);
+                            echo $pagination->getPaginationLinks($page_url);
+                            echo $pagination->getNextLink($page_url);
+                            echo '</div>';
+
+                             ?>
         </div>
     </div>
   <?php

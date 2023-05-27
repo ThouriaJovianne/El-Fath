@@ -20,7 +20,6 @@
         .sub-table {
             animation: transitionIn-Y-bottom 0.5s;
         }
-
     </style>
 
 </head>
@@ -94,7 +93,7 @@
     </tr>
     <tr class="menu-row">
         <td class="menu-btn menu-icon-appoinment">
-            <a href="appointment.php" class="non-style-link-menu">
+            <a href="settings.php" class="non-style-link-menu">
                 <div>
                     <p class="menu-text">الإعدادت</p>
             </a></div>
@@ -193,7 +192,7 @@
                             <?php
                             // $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
 
-                            include 'Pagination.php';
+                            include '../Pagination.php';
 
                             $records_per_page = 1; // Replace with the desired number of records per page
 
@@ -285,6 +284,9 @@
 
 
                         </div>
+                </td>
+            </tr>
+        </table>
     </div>
     <?php
     if (isset($_GET["id"]) && isset($_GET["action"])) {
@@ -505,7 +507,7 @@
                             </tr>
                             
                             <tr>
-                                <form  action="add-teacher.php" method="POST" class="add-new-form" name="addTeacherForm" >
+                                <form action="add-teacher.php" method="POST" class="add-new-form" name="addTeacherForm" >
                                 <td class="label-td" colspan="2">
                                     <label for="teacher_name" class="form-label">الاسم: </label>
                                 </td>
