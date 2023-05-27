@@ -15,11 +15,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
- .body-home {
+.body-home {
   background: url("../img/banner-img-2.jpg");
   background-size: cover;
   background-attachment: fixed;
-} 
+}
 
 /* 444444 */
 
@@ -30,14 +30,14 @@ background-attachment: fixed;
 }*/
 .login {
   max-width: 500px;
-  border:#d2d2a7  ;
+  border: #d2d2a7;
   width: 90%;
   margin-top: 400PX;
-  background: #cacac1 ; 
+  background: #cacac1;
   padding: 10px;
   border-radius: 10px;
- 
-  
+
+
 }
 
 .login h3 {
@@ -58,27 +58,30 @@ background-attachment: fixed;
   width: 100%;
 }
 
-.btn{
+.btn {
   text-align: center;
   width: 180px;
   height: 30px auto;
   height: 35PX;
-  margin:20px 10PX;
-  background-color: rgba(255,173,5,0.80);
+  margin: 20px 10PX;
+  background-color: rgba(255, 173, 5, 0.80);
   border-radius: 30px;
   border: 0;
-  outline:none;
-  color:#fff;
-  cursor:pointer;
-  
-  }
-  form .btn {
-    background-color: rgba(255,173,5,0.80);
-  }
-  form .btn :hover{
-    background-color: orange;
-  }
-  /* form btn{
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+
+}
+
+form .btn {
+  background-color: rgba(255, 173, 5, 0.80);
+}
+
+form .btn :hover {
+  background-color: orange;
+}
+
+/* form btn{
   width: 110px;
   height: 35PX;
   margin:20px 10PX;
@@ -128,9 +131,9 @@ h6,
   bottom: 15px;
   z-index: 99999;
   background: #f58641;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   transition: all 0.4s;
 }
 
@@ -149,6 +152,7 @@ h6,
   visibility: visible;
   opacity: 1;
 }
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -157,7 +161,7 @@ h6,
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
-  background:rgb(232, 116, 0) ;
+  background: rgb(232, 116, 0);
 }
 
 #header.header-transparent {
@@ -194,6 +198,7 @@ h6,
 #main {
   margin-top: 80px;
 }
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -477,7 +482,7 @@ h6,
   animation-delay: 0.4s;
   margin: 0 auto 30px auto;
   color: #fff;
-  font-family:  'Amiri', serif;
+  font-family: 'Amiri', serif;
   font-size: 20px;
 }
 
@@ -572,7 +577,8 @@ h6,
 /*--------------------------------------------------------------
 # Hero No Slider Section
 --------------------------------------------------------------*/
-#hero-no-slider ,#hero2-no-slider {
+#hero-no-slider,
+#hero2-no-slider {
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -580,49 +586,58 @@ h6,
   text-align: center;
 }
 
- 
-#hero-no-slider::before, #hero2-no-slider::before {
+
+#hero-no-slider::before,
+#hero2-no-slider::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  
+
   background-size: cover;
 
 }
-#hero-no-slider::before{
-  background:  url("../img/banner-img-1.jpg") center top no-repeat;
+
+#hero-no-slider::before {
+  background: url("../img/banner-img-1.jpg") center top no-repeat;
 }
-#hero2-no-slider::before{
-  background:  url("../img/banner-img-2.jpg") center top no-repeat;
+
+#hero2-no-slider::before {
+  background: url("../img/banner-img-2.jpg") center top no-repeat;
 }
-#hero-no-slider h2 , #hero2-no-slider h2 {
+
+#hero-no-slider h2,
+#hero2-no-slider h2 {
   color: #fff;
   margin-top: 20px;
-  margin-bottom:  20px;
-  font-size: 40px;
-  font-weight: 700;
-  font-family: 'Gulzar', serif;
-}
-#hero-no-slider h3 ,#hero2-no-slider h3  {
-  color: #fff;
-  margin-top: 20px;
-  margin-bottom:  20px;
+  margin-bottom: 20px;
   font-size: 40px;
   font-weight: 700;
   font-family: 'Gulzar', serif;
 }
 
-#hero-no-slider p , #hero2-no-slider p {
+#hero-no-slider h3,
+#hero2-no-slider h3 {
   color: #fff;
-  font-family:  'Amiri', serif;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 700;
+  font-family: 'Gulzar', serif;
+}
+
+#hero-no-slider p,
+#hero2-no-slider p {
+  color: #fff;
+  font-family: 'Amiri', serif;
   font-size: 20px;
 }
 
 
-#hero-no-slider .btn-get-started , #hero2-no-slider .btn-get-started  {
+#hero-no-slider .btn-get-started,
+#hero2-no-slider .btn-get-started {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -638,8 +653,10 @@ h6,
   border: 2px solid #FFAD05;
 }
 
-#hero-no-slider .btn-get-started:hover ,#hero2-no-slider .btn-get-started:hover {
-  background: #FFAD05;;
+#hero-no-slider .btn-get-started:hover,
+#hero2-no-slider .btn-get-started:hover {
+  background: #FFAD05;
+  ;
   color: #fff;
   text-decoration: none;
 }
@@ -649,7 +666,8 @@ h6,
     font-size: 30px;
   }
 }
-.title{
+
+.title {
   font-size: 20px;
   color: white;
 
@@ -757,7 +775,7 @@ section {
 --------------------------------------------------------------*/
 .services {
   padding-bottom: 20px;
-  
+
 }
 
 .services .icon-box {
@@ -861,11 +879,13 @@ section {
   margin-right: auto;
   margin-left: auto;
 }
+
 .history-section {
   float: left;
   width: 100%;
   padding: 107px 0 80px 0;
 }
+
 .why-us .container {
   box-shadow: 0 5px 25px 0 rgba(216, 215, 214, 0.6);
   background: #fff;
@@ -2269,6 +2289,7 @@ section {
   color: #bedae8;
   font-size: 14px;
 }
+
 /* *********** login ******************* */
 .full {
   height: 100%;
@@ -2303,7 +2324,7 @@ section {
 }
 
 form button[type="submit"] {
-  background-color: rgba(255, 151, 5, 0.8); 
+  background-color: rgba(255, 151, 5, 0.8);
   color: #fff;
   padding: 10px 30px;
   border: none;
@@ -2314,7 +2335,8 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
- background-color:  rgba(255, 138, 5, 0.79); ;
+  background-color: rgba(255, 138, 5, 0.79);
+  ;
 }
 
 .linput-container {
@@ -2513,6 +2535,7 @@ form button[type="submit"]:hover {
 #footer .credits a {
   color: #a2cce3;
 }
+
 .header_fixed {
   max-height: 100vh;
   width: 100%;
@@ -2563,11 +2586,13 @@ td button {
   background-color: rgb(18, 2, 75);
   color: #e6e7e8;
 }
-td button:focus:hover{
-color: #fff;
-background: #368ff4;
+
+td button:focus:hover {
+  color: #fff;
+  background: #368ff4;
 
 }
+
 ::-webkit-scrollbar {
   width: 6px;
 }
