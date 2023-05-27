@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/pagination.css">
+    <link rel="stylesheet" href="../css/icons.css">
 
     <title>الأساتذة</title>
     <style>
@@ -21,6 +22,8 @@
             animation: transitionIn-Y-bottom 0.5s;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
@@ -64,154 +67,163 @@
                     </td>
 
                 </tr>
+                </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-dashbord">
+                    <td class="menu-item">
                         <a href="index.php" class="non-style-link-menu">
-                            <div>
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
                                 <p class="menu-text">الرئيسية</p>
+                            </div>
                         </a>
-        </div></a>
-        </td>
-        </tr>
-        <tr class="menu-row">
-            <td class="menu-btn menu-icon-doctor">
-                <a href="teachers.php" class="non-style-link-menu">
-                    <div>
-                        <p class="menu-text">الأساتذة</p>
-                </a>
-    </div>
-    </td>
-    </tr>
-    <tr class="menu-row">
-        <td class="menu-btn menu-icon-patient  menu-active menu-icon-patient-active">
-            <a href="students.php" class="non-style-link-menu non-style-link-menu-active">
-                <div>
-                    <p class="menu-text">الطلاب</p>
-            </a></div>
-        </td>
-    </tr>
-    <tr class="menu-row">
-        <td class="menu-btn menu-icon-appoinment">
-            <a href="appointment.php" class="non-style-link-menu">
-                <div>
-                    <p class="menu-text">الإعدادت</p>
-            </a></div>
-        </td>
-    </tr>
-    </table>
-    </div>
-    <div class="dash-body">
-        <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
-            <tr>
-                <td width="13%">
-                    <a href="teachers.php"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
-                            <font class="tn-in-text">الرجوع</font>
-                        </button></a>
-                </td>
-                <td>
+                    </td>
+                </tr>
 
-                    <form action="" method="post" class="header-search">
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="teachers.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-person-chalkboard"></i>
+                                <p class="menu-text">الأساتذة</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
 
-                        <input type="search" name="search" class="input-text header-searchbar" placeholder="ابحث حول اسم طالب أو بريده الالكتروني" list="students">&nbsp;&nbsp;
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="students.php" class="non-style-link-menu non-style-link-menu-active">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p class="menu-text">الطلاب</p>
+                            </div>
+                        </a>
+                    </td>
+                    <!-- </tr>
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="settings.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-gears"></i>
+                                <p class="menu-text">الإعدادت</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr> -->
+            </table>
+        </div>
+        <div class="dash-body">
+            <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
+                <tr>
+                    <td width="13%">
+                        <a href="teachers.php"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px;height:40px;">
+                                <font class="tn-in-text">الرجوع</font>
+                            </button></a>
+                    </td>
+                    <td>
 
-                        <?php
-                        echo '<datalist id="teachers">';
-                        $list11 = $database->query("select teacher_name, teacher_email from teacher;");
+                        <form action="" method="post" class="header-search">
 
-                        for ($y = 0; $y < $list11->num_rows; $y++) {
-                            $row00 = $list11->fetch_assoc();
-                            $d = $row00["teacher_name"];
-                            $c = $row00["teacher_email"];
-                            echo "<option value='$d'><br/>";
-                            echo "<option value='$c'><br/>";
-                        };
+                            <input type="search" name="search" class="input-text header-searchbar" placeholder="ابحث حول اسم طالب أو بريده الالكتروني" list="students">&nbsp;&nbsp;
 
-                        echo ' </datalist>';
-                        ?>
-
-
-                        <input type="Submit" value="ابحث" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
-
-                    </form>
-
-                </td>
-                <td width="15%">
-                    <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                        تاريخ اليوم
-                    </p>
-                    <p class="heading-sub12" style="padding: 0;margin: 0;">
-                        <?php
-                        date_default_timezone_set('Africa/Algiers');
-
-                        $date = date('Y-m-d');
-                        echo $date;
-                        ?>
-                    </p>
-                </td>
-                <td width="10%">
-                    <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
-                </td>
-
-
-            </tr>
-
-            <tr>
-                <td colspan="2" style="padding-top:30px;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">إضافة طالب جديد</p>
-                </td>
-                <td colspan="2">
-                    <a href="?action=add&id=none&error=0" class="non-style-link"><button class="login-btn btn-primary btn button-icon" style="display: flex;justify-content: center;align-items: center;margin-left:75px;background-image: url('../img/icons/add.svg');">إضافة طالب</font></button>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" style="padding-top:10px;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">جميع الطلاب </p>
-                </td>
-                <!-- (<?php echo $list11->num_rows; ?>) -->
-
-            </tr>
-            <?php
-            if ($_POST) {
-                $keyword = $_POST["search"];
-
-                $sqlmain = "select * from student where student_email='$keyword' or student_name='$keyword' or student_name like '$keyword%' or student_name like '%$keyword' or student_name like '%$keyword%'";
-            } else {
-                $sqlmain = "select * from student order by student_id desc";
-            }
-
-
-
-            ?>
-
-            <tr>
-                <td colspan="4">
-                    <center>
-                        <div class="abc scroll">
-                            <!-- ///////////////*********************//////////////////// */ -->
                             <?php
-                            include '../Pagination.php';
-                            $records_per_page = 1;
-                            $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
-                            $result = $database->query($sqlmain);
-                            $pagination = new Pagination($result->num_rows, $records_per_page);
-                            $current_page = $pagination->getCurrentPage();
-                            $offset = ($current_page - 1) * $records_per_page;
-                            $sqlmain = $sqlmain . " LIMIT $offset, $records_per_page";
-                            // Display the table
-                            echo '<table width="93%" class="sub-table scrolldown pagination" border="0">';
-                            echo '<thead>';
-                            echo '<tr>';
-                            echo '<th class="table-headin">اسم الطالب</th>';
-                            echo '<th class="table-headin">البريد الالكتروني</th>';
-                            echo '<th class="table-headin">رقم الهاتف</th>';
-                            echo '<th class="table-headin">عنوان المنزل</th>';
-                            echo '<th class="table-headin">تعديل / حذف</th>';
-                            echo '</tr>';
-                            echo '</thead>';
-                            echo '<tbody>';
-                            if ($result->num_rows == 0) {
-                                echo '<tr>
+                            echo '<datalist id="teachers">';
+                            $list11 = $database->query("select teacher_name, teacher_email from teacher;");
+
+                            for ($y = 0; $y < $list11->num_rows; $y++) {
+                                $row00 = $list11->fetch_assoc();
+                                $d = $row00["teacher_name"];
+                                $c = $row00["teacher_email"];
+                                echo "<option value='$d'><br/>";
+                                echo "<option value='$c'><br/>";
+                            };
+
+                            echo ' </datalist>';
+                            ?>
+
+
+                            <input type="Submit" value="ابحث" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+
+                        </form>
+
+                    </td>
+                    <td width="15%">
+                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
+                            تاريخ اليوم
+                        </p>
+                        <p class="heading-sub12" style="padding: 0;margin: 0;">
+                            <?php
+                            date_default_timezone_set('Africa/Algiers');
+
+                            $date = date('Y-m-d');
+                            echo $date;
+                            ?>
+                        </p>
+                    </td>
+                    <td width="10%">
+                        <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
+                    </td>
+
+
+                </tr>
+
+                <tr>
+                    <td colspan="2" style="padding-top:30px;">
+                        <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">إضافة طالب جديد</p>
+                    </td>
+                    <td colspan="2">
+                        <a href="?action=add&id=none&error=0" class="non-style-link"><button class="login-btn btn-primary btn button-icon" style="display: flex;justify-content: center;align-items: center;margin-left:75px;background-image: url('../img/icons/add.svg');">إضافة طالب</font></button>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding-top:10px;">
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">جميع الطلاب </p>
+                    </td>
+                    <!-- (<?php echo $list11->num_rows; ?>) -->
+
+                </tr>
+                <?php
+                if ($_POST) {
+                    $keyword = $_POST["search"];
+
+                    $sqlmain = "select * from student where student_email='$keyword' or student_name='$keyword' or student_name like '$keyword%' or student_name like '%$keyword' or student_name like '%$keyword%'";
+                } else {
+                    $sqlmain = "select * from student order by student_id desc";
+                }
+
+
+
+                ?>
+
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <div class="abc scroll">
+                                <!-- ///////////////*********************//////////////////// */ -->
+                                <?php
+                                include '../Pagination.php';
+                                $records_per_page = 1;
+                                $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
+                                $result = $database->query($sqlmain);
+                                $pagination = new Pagination($result->num_rows, $records_per_page);
+                                $current_page = $pagination->getCurrentPage();
+                                $offset = ($current_page - 1) * $records_per_page;
+                                $sqlmain = $sqlmain . " LIMIT $offset, $records_per_page";
+                                // Display the table
+                                echo '<table width="93%" class="sub-table scrolldown pagination" border="0">';
+                                echo '<thead>';
+                                echo '<tr>';
+                                echo '<th class="table-headin">اسم الطالب</th>';
+                                echo '<th class="table-headin">البريد الالكتروني</th>';
+                                echo '<th class="table-headin">رقم الهاتف</th>';
+                                echo '<th class="table-headin">عنوان المنزل</th>';
+                                echo '<th class="table-headin">تعديل / حذف</th>';
+                                echo '</tr>';
+                                echo '</thead>';
+                                echo '<tbody>';
+                                if ($result->num_rows == 0) {
+                                    echo '<tr>
                                     <td colspan="4">
                                     <br><br><br><br>
                                     <center>
@@ -225,26 +237,26 @@
                                     <br><br><br><br>
                                     </td>
                                     </tr>';
-                            } else {
-                                $starting_record = ($current_page - 1) * $records_per_page;
-                                $ending_record = $starting_record + $records_per_page - 1;
+                                } else {
+                                    $starting_record = ($current_page - 1) * $records_per_page;
+                                    $ending_record = $starting_record + $records_per_page - 1;
 
-                                // Move the result pointer to the starting record
-                                $result->data_seek($starting_record);
+                                    // Move the result pointer to the starting record
+                                    $result->data_seek($starting_record);
 
-                                for ($x = $starting_record; $x <= $ending_record && $row = $result->fetch_assoc(); $x++) {
+                                    for ($x = $starting_record; $x <= $ending_record && $row = $result->fetch_assoc(); $x++) {
 
-                                    $student_id = $row["student_id"];
-                                    $student_name = $row["student_name"];
-                                    $student_email = $row["student_email"];
-                                    $student_homeaddress = $row["student_homeaddress"];
-                                    $student_phone = $row["student_phone"];
+                                        $student_id = $row["student_id"];
+                                        $student_name = $row["student_name"];
+                                        $student_email = $row["student_email"];
+                                        $student_homeaddress = $row["student_homeaddress"];
+                                        $student_phone = $row["student_phone"];
 
 
-                                    echo '<tr>
+                                        echo '<tr>
                                         <td> &nbsp;' .
-                                        substr($student_name, 0, 30)
-                                        . '</td>
+                                            substr($student_name, 0, 30)
+                                            . '</td>
                                         <td>
                                         ' . substr($student_email, 0, 20) . '
                                         </td>
@@ -266,33 +278,33 @@
                                         </div>
                                         </td>
                                     </tr>';
+                                    }
                                 }
-                            }
-                            echo '</tbody>';
-                            echo '</table>';
-                            // Display pagination links
-                            $page_url = $_SERVER['PHP_SELF']; // Change this to the URL of the page
-                            echo '<div class="pagination-links">';
-                            echo $pagination->getPreviousLink($page_url);
-                            echo $pagination->getPaginationLinks($page_url);
-                            echo $pagination->getNextLink($page_url);
-                            echo '</div>';
-                            ?>
+                                echo '</tbody>';
+                                echo '</table>';
+                                // Display pagination links
+                                $page_url = $_SERVER['PHP_SELF']; // Change this to the URL of the page
+                                echo '<div class="pagination-links">';
+                                echo $pagination->getPreviousLink($page_url);
+                                echo $pagination->getPaginationLinks($page_url);
+                                echo $pagination->getNextLink($page_url);
+                                echo '</div>';
+                                ?>
 
-                                             </div>
-                        </td>
-                        </tr>
-                        </table>
-    </div>
-    <?php
+                            </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <?php
 
-    if (isset($_GET["id"]) && isset($_GET["action"])) {
-        $teacher_id = $_GET["id"];
-        $action = $_GET["action"];
-    } else {
-        $teacher_id = 0; // or any default value you want
-        $action = "";
-    }
+        if (isset($_GET["id"]) && isset($_GET["action"])) {
+            $teacher_id = $_GET["id"];
+            $action = $_GET["action"];
+        } else {
+            $teacher_id = 0; // or any default value you want
+            $action = "";
+        }
 
 
         if ($action == 'drop') {
@@ -1029,11 +1041,11 @@
     ';
             };
         };
-   
 
 
 
-    ?>
+
+        ?>
     </div>
 
 </body>
