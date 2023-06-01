@@ -1,0 +1,35 @@
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-position: 30% 50%;
+            margin-left: 10px;
+            /* Add this line to center the content horizontally */
+        }
+
+        .menu-content {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            /* Add this line to allow the text to occupy the remaining space */
+        }
+
+        .menu-content i {
+            margin-right: 10px;
+            /* Adjust this value as needed */
+            margin-left: 10px;
+            /* Add this line to create space between the icon and text */
+        }
+
+        .menu-text {
+            padding-left: 25px;
+            /* Add this line to center the text horizontally */
+        }
+
+
+        .menu-row:hover {
+            background-color: #faedd8;
+            ;
+
+            /* Change this to the desired hover background color */
+        }

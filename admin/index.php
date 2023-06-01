@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/icons.css">
         
     <title>الصفحة الرئيسية: مشرف عام</title>
     <style>
@@ -21,7 +22,8 @@
             animation: transitionIn-Y-bottom 0.5s;
         }
     </style>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
 </head>
 <body>
@@ -66,22 +68,38 @@
                     </table>
                     </td>
                 </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-dashbord menu-active menu-icon-dashbord-active" >
-                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">الرئيسية</p></a></div></a>
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active">
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
+                                <p class="menu-text">الرئيسية</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
 
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-doctor ">
-                        <a href="teachers.php" class="non-style-link-menu "><div><p class="menu-text">الأساتذة</p></a></div>
+                    <td class="menu-item">
+                        <a href="teachers.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-person-chalkboard"></i>
+                                <p class="menu-text">الأساتذة</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-patient">
-                        <a href="students.php" class="non-style-link-menu"><div><p class="menu-text">الطلاب</p></a></div>
+
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="students.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p class="menu-text">الطلاب</p>
+                            </div>
+                        </a>
                     </td>
-                </tr>
+</tr>
 
             </table>
         </div>
@@ -154,37 +172,32 @@
                                     <p style="font-size: 20px;font-weight:600;padding-left: 12px;">مستجدات المدرسة القرآنية</p>
                                 </td>
                             </tr>
-                            <tr>
-                                <td style="width: 50%;">
-                                    <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex">
-                                        <div>
+                            <td style="width: 50%;">
+                                        <div class="dashboard-items" style="padding:20px;margin:auto;width:95%;display: flex">
+                                            <div>
                                                 <div class="h1-dashboard">
-                                                    <?php    echo $doctorrow->num_rows  ?>
+                                                    <?php echo $doctorrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
                                                     أساتذة&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
+                                            </div>
+                                            <div class="btn-icon-back dashboard-icons"><i class="fa-solid fa-person-chalkboard"></i></div>
                                         </div>
-                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
-                                    </div>
-                                </td>
-                                <td style="width: 50%;">
-                                    <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex;">
-                                        <div>
+                                    </td>
+                                    <td style="width: 50%;">
+                                        <div class="dashboard-items" style="padding:20px;margin:auto;width:95%;display: flex;">
+                                            <div>
                                                 <div class="h1-dashboard">
-                                                    <?php    echo $patientrow->num_rows  ?>
+                                                    <?php echo $patientrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
                                                     طالب &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
+                                            </div>
+                                            <div class="btn-icon-back dashboard-icons"><i class="fa-solid fa-graduation-cap"></i></div>
                                         </div>
-                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
-                                    </div>
-                                </td>
-                                
-                                
-                                
-                            </tr>
+                                    </td>
                         </table>
                     </center>
                     </td>

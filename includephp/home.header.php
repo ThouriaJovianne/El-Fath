@@ -46,9 +46,8 @@
         <ul> 
          
          
- <li><a href="login.php">سجل الدخول </a></li>
+ <li><a href="login.php">تسجيل الدخول </a></li>
            <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a> -->
-            <li><a href="team.php">فريقنا</a></li>
             <li><a href="services.php">خدماتنا</a></li>
             <li><a href="about.php">حول المسجد</a></li>
             <li><a href="index.php">الرئيسية</a></li>

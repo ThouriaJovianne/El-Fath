@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/pagination.css">
+    <link rel="stylesheet" href="../css/icons.css">
+
 
     <title>الأساتذة</title>
     <style>
@@ -21,6 +23,8 @@
             animation: transitionIn-Y-bottom 0.5s;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
@@ -62,44 +66,44 @@
                             </tr>
                         </table>
                     </td>
-
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-dashbord">
+                    <tr class="menu-row">
+                    <td class="menu-item">
                         <a href="index.php" class="non-style-link-menu">
-                            <div>
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
                                 <p class="menu-text">الرئيسية</p>
+                            </div>
                         </a>
-        </div></a>
-        </td>
-        </tr>
-        <tr class="menu-row">
-            <td class="menu-btn menu-icon-doctor">
-                <a href="teachers.php" class="non-style-link-menu">
-                    <div>
-                        <p class="menu-text">الأساتذة</p>
-                </a>
-    </div>
-    </td>
-    </tr>
-    <tr class="menu-row">
-        <td class="menu-btn menu-icon-patient  menu-active menu-icon-patient-active">
-            <a href="students.php" class="non-style-link-menu non-style-link-menu-active">
-                <div>
-                    <p class="menu-text">الطلاب</p>
-            </a></div>
-        </td>
-    </tr>
+                    </td>
+                </tr>
+
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="teachers.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-person-chalkboard"></i>
+                                <p class="menu-text">الأساتذة</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="students.php" class="non-style-link-menu non-style-link-menu-active">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p class="menu-text">الطلاب</p>
+                            </div>
+                        </a>
+                    </td>
+</tr>
     </table>
     </div>
     <div class="dash-body">
         <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
             <tr>
-                <td width="13%">
-                    <a href="teachers.php"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
-                            <font class="tn-in-text">الرجوع</font>
-                        </button></a>
-                </td>
+                <?php include("back.php") ?>
                 <td>
 
                     <form action="" method="post" class="header-search">
@@ -182,8 +186,8 @@
                         <div class="abc scroll">
                             <!-- ///////////////*********************//////////////////// */ -->
                             <?php
-                            include 'Pagination.php';
-                            $records_per_page = 1;
+                            include '../Pagination.php';
+                            $records_per_page = 8;
                             $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
                             $result = $database->query($sqlmain);
                             $pagination = new Pagination($result->num_rows, $records_per_page);
@@ -194,7 +198,7 @@
                             echo '<table width="93%" class="sub-table scrolldown pagination" border="0">';
                             echo '<thead>';
                             echo '<tr>';
-                            echo '<th class="table-headin">اسم الطالب</th>';
+                            echo '<th class="table-headin">اسم ولقب الطالب</th>';
                             echo '<th class="table-headin">البريد الالكتروني</th>';
                             echo '<th class="table-headin">رقم الهاتف</th>';
                             echo '<th class="table-headin">عنوان المنزل</th>';
@@ -505,12 +509,12 @@
                             <tr>
                                 <form action="add-student.php" method="POST" class="add-new-form">
                                 <td class="label-td" colspan="2">
-                                    <label for="student_name" class="form-label">الاسم: </label>
+                                    <label for="student_name" class="form-label">الاسم واللقب: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="student_name" class="input-text" placeholder="اسم الطالب" required><br>
+                                    <input type="text" name="student_name" class="input-text" placeholder="اسم ولقب الطالب" required><br>
                                 </td>
                                 
                             </tr>
@@ -701,7 +705,7 @@
                             <tr>
                                 <td colspan="2">
                                     <input type="reset" value="أعد ملأ الصفحة" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                
+                                    <a href="students.php"><input type="button" value="إلغاء" class="login-btn btn-primary-soft btn" ></a>
                                     <input type="submit" value="أضف" class="login-btn btn-primary btn">
                                 </td>
                 
@@ -756,17 +760,17 @@
             $parentjob_name = $parentjob_array["job_name"];
 
             $student_educationallevel = $row["student_educationallevel"];
-            $educationallevel_result = $database->query("select educationallevel_name from educationallevel where educationallevel_id='$teacher_educationallevel'");
+            $educationallevel_result = $database->query("select educationallevel_name from educationallevel where educationallevel_id='$student_educationallevel'");
             $educationallevel_array = $educationallevel_result->fetch_assoc();
             $educationallevel_name = $educationallevel_array["educationallevel_name"];
 
             $student_scholaryear = $row["student_scholaryear"];
-            $scholaryear_result = $database->query("select scholaryear_name from scholaryear where scholaryear_id='$teacher_scholaryear'");
+            $scholaryear_result = $database->query("select scholaryear_name from scholaryear where scholaryear_id='$student_scholaryear'");
             $scholaryear_array = $scholaryear_result->fetch_assoc();
             $scholaryear_name = $scholaryear_array["scholaryear_name"];
 
             $student_class = $row["student_class"];
-            $class_result = $database->query("select class_name from class where class_id='$teacher_class'");
+            $class_result = $database->query("select class_name from class where class_id='$student_class'");
             $class_array = $class_result->fetch_assoc();
             $class_name = $class_array["class_name"];
 
@@ -803,7 +807,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <form action="edit-student.php" method="POST" class="add-new-form">
+                                            <form action="edit-student.php" method="POST" class="add-new-form" name="f" onsubmit="return verif()"> 
                                             <label for="student_email" class="form-label">:البريد الالكتروني </label>
                                             <input type="hidden" value="' . $student_id . '" name="student_id">
                                             <input type="hidden" name="oldemail" value="' . $student_email . '" >
@@ -811,18 +815,18 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                        <input type="email" name="student_email" class="input-text" placeholder="البريد الالكتروني" value="' . $student_email . '" required><br>
+                                        <input type="text" name="student_email" class="input-text" placeholder="البريد الالكتروني" value="' . $student_email . '"><br>
                                         </td>
                                     </tr>
                                     <tr>
                                         
                                         <td class="label-td" colspan="2">
-                                            <label for="student_name" class="form-label">:الاسم </label>
+                                            <label for="student_name" class="form-label">:الاسم واللقب </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="student_name" class="input-text" placeholder="اسم الطالب" value="' . $student_name . '" required><br>
+                                            <input type="text" name="student_name" class="input-text" placeholder="اسم ولقب الطالب" value="' . $student_name . '" ><br>
                                         </td>
                                         
                                     </tr>
@@ -834,7 +838,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="student_homeaddress" class="input-text" placeholder="عنوان المنزل" value="' . $student_homeaddress . '" required><br>
+                                            <input type="text" name="student_homeaddress" class="input-text" placeholder="عنوان المنزل" value="' . $student_homeaddress . '"><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -844,7 +848,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="tel" name="student_phone" class="input-text" placeholder="رقم الهاتف" value="' . $student_phone . '" required><br>
+                                            <input type="tel" name="student_phone" class="input-text" placeholder="رقم الهاتف" value="' . $student_phone . '"><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -961,7 +965,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="student_password" class="input-text" placeholder=":أدخل كلمة سر" required><br>
+                                            <input type="password" name="student_password" class="input-text" placeholder=":أدخل كلمة سر"><br>
                                         </td>
                                     </tr><tr>
                                         <td class="label-td" colspan="2">
@@ -970,7 +974,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="confirm_student_password" class="input-text" placeholder="أكد كلمة السر" required><br>
+                                            <input type="password" name="confirm_student_password" class="input-text" placeholder="أكد كلمة السر"><br>
                                         </td>
                                     </tr>
                                     
@@ -978,7 +982,7 @@
                                     <tr>
                                         <td colspan="2">
                                             <input type="reset" value="أعد ملأ الصفحة" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        
+                                            <a href="students.php"><input type="button" value="إلغاء" class="login-btn btn-primary-soft btn" ></a>
                                             <input type="submit" value="حفظ" class="login-btn btn-primary btn">
                                         </td>
                         
@@ -1026,5 +1030,168 @@
     </div>
 
 </body>
+<script>
+
+
+    function preventBlankTabs(inputField) {
+  var value = inputField.value.trim(); // Trim whitespace from the input value
+
+  if (value === "") {
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  // Check for blank tabs using regex
+  var regex = /\t+/;
+  if (regex.test(value)) {
+    alert("يرجى ادخال المعلومات ");
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  return true; // Allow form submission or further processing
+}
+
+function rejectSpecialCharacters(inputField) {
+  var value = inputField.value;
+
+  // Check for special characters or numbers using regex
+  var regex = /^[\p{L}\s]*$/u;
+  if (!regex.test(value)) {
+    alert("يرجى عدم ادخال رموز خاصة");
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  return true; // Allow form submission or further processing
+}
+
+        function verif() {
+             // email
+          if (document.f.student_email.value == "") {
+            alert("! الرجاء ادخال البريد الالكتروني ");
+            return false;
+          };
+          var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          if (!emailPattern.test(document.f.student_email.value)) {
+            alert(" الرجاء ادخال بريد الكتروني صالح");
+            return false;
+          };
+        
+
+          if (document.f.student_name.value == "") {
+            alert("  ادخل الاسم و اللقب");
+            return false;
+          };
+     // Check for blank tab in first name
+     if (!preventBlankTabs(document.f.student_name)) {
+        alert("  ادخل الاسم و اللقب");
+     return false;
+     };
+
+  // Check for special characters or numbers in first name
+  if (!rejectSpecialCharacters(document.f.student_name)) {
+    return false;
+  };
+          // address 
+          if (document.f.student_homeaddress.value == "") {
+            alert(" ادخل العنوان ");
+            return false;
+          };
+
+           // Check for blank tab in first name
+     if (!preventBlankTabs(document.f.student_homeaddress)) {
+   alert(" ادخل العنوان ");
+     return false;
+     };
+
+    
+ 
+  if (document.f.student_phone.value == "") {
+            alert(" ادخل رقم الهاتف");
+            return false;
+          };
+            // Check for blank tab in first name
+     if (!preventBlankTabs(document.f.student_phone)) {
+    alert(" ادخل رقم الهاتف");
+     return false;
+     };
+
+  var v = 1;
+          var phone = document.f.student_phone.value;
+          var size = phone.length;
+
+          for (i = 0; i < size; ++i) {
+            if (
+              phone.charAt(i) < "0" ||
+              phone.charAt(i) > "9" ||
+              size != 10 ||
+              !/^[a-zA-Z0-9]+$/.test(phone)
+            ) {
+              v = -1;
+            }
+          };
+
+          if (v == -1) {
+            alert("رقم الهاتف خاطئ");
+            return false;
+          };
+
+
+    var phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(document.f.student_phone.value)) {
+        alert("رقم الهاتف خاطئ");
+        return false;
+    };
+          // end phone number
+
+    // password
+          if (document.f.student_password.value == "") {
+            alert("ادخل كلمة السر ");
+            return false;
+          };
+          var taille = document.f.student_password.value.length;
+          if (taille < 8 || taille > 13) {
+            alert("يجب ان تحتوي كلمة السر على 8 الى 13 رمز");
+            return false;
+          };
+          var hasNumber = false;
+          var hasLetter = false;
+          var hasUppercase = false;
+
+          for (var i = 0; i < taille; i++) {
+            var char = document.f.student_password.value.charAt(i);
+
+            if (/[0-9]/.test(char)) {
+              hasNumber = true;
+            } else if (/[a-zA-Z]/.test(char)) {
+              hasLetter = true;}
+              if (char === char.toUpperCase()) {
+                hasUppercase = true;
+              }
+            };
+          
+          v = hasNumber && hasLetter && hasUppercase;
+          if (v == false) {
+            alert("كلمة السر خاطئة  ");
+            return false;
+          };
+         
+         
+        if (document.f.confirm_student_password.value === "") {
+    alert("يجب تاكيد كلمة السر ");
+    return false;
+  };
+
+ 
+
+  if (document.f.student_password.value !== document.f.confirm_student_password.value) {
+    alert("حدث خطأ في تاكيد كلمة المرور يرجى اعادة ادخالها ");
+    return false;
+  };
+        }
+
+
+      </script>
 
 </html>

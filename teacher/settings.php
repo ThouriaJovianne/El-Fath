@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/icons.css">
         
 
 
@@ -22,7 +23,8 @@
             animation: transitionIn-Y-bottom 0.5s;
         }
     </style>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
 </head>
 <body>
@@ -73,40 +75,53 @@
                     </table>
                     </td>
                 </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-dashbord" >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">الرئيسية</p></a></div></a>
-                    </td>
-                </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-patient">
-                        <a href="student.php" class="non-style-link-menu"><div><p class="menu-text">طلابي</p></a></div>
+                <tr class="menu-row">
+            <td class="menu-btn">
+                        <a href="index.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
+                                <p class="menu-text"> الرئيسية</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-schedule">
+                    <td class="menu-btn">
+                        <a href="student.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p class="menu-text">طلابي</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn">
                         <a href="assignment.php" class="non-style-link-menu">
-                            <div>
-                            <p class="menu-text">الواجبات المنزلية لطلابي</p>
-                        </a></div>
+                            <div class="menu-content">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <p class="menu-text">الواجبات المنزلية</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-settings  menu-active menu-icon-settings-active">
-                        <a href="settings.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">الإعدادات</p></a></div>
+                <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="settings.php" class="non-style-link-menu non-style-link-menu-active">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-gears"></i>
+                                <p class="menu-text">الإعدادت</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
-                
             </table>
         </div>
         <div class="dash-body" style="margin-top: 15px">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;" >
                         
                         <tr >
-                            
-                        <td width="13%" >
-                    <a href="settings.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">رجوع</font></button></a>
-                    </td>
+                        <?php include("back.php") ?>
                     <td>
                         <p style="font-size: 23px;padding-left:12px;font-weight: 600;">الإعدادات</p>
                                            
@@ -153,7 +168,9 @@
                                 <td style="width: 25%;">
                                     <a href="?action=edit&id=<?php echo $userid ?>&error=0" class="non-style-link">
                                     <div  class="dashboard-items setting-tabs"  style="padding:20px;margin:auto;width:95%;display: flex">
-                                        <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
+                                        <div class="btn-icon-back dashboard-icons-setting">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </div>
                                         <div>
                                                 <div class="h1-dashboard">
                                                     تغيير إعدادات الحساب&nbsp;
@@ -179,7 +196,9 @@
                             <td style="width: 25%;">
                                     <a href="?action=view&id=<?php echo $userid ?>" class="non-style-link">
                                     <div  class="dashboard-items setting-tabs"  style="padding:20px;margin:auto;width:95%;display: flex;">
-                                        <div class="btn-icon-back dashboard-icons-setting " style="background-image: url('../img/icons/view-iceblue.svg');"></div>
+                                        <div class="btn-icon-back dashboard-icons-setting ">
+                                        <i class="fa-solid fa-eye"></i>
+                                        </div>
                                         <div>
                                                 <div class="h1-dashboard" >
                                                     إظهار بيانات الحساب 
@@ -324,8 +343,8 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="settings.php"><input type="button" value="نعم" class="login-btn btn-primary-soft btn" ></a>
-                                
+                                    <a href="settings.php"><input type="button" value="حسنا" class="login-btn btn-primary-soft btn" ></a>
+
                                     
                                 </td>
                 
@@ -400,12 +419,12 @@
                                     <tr>
                                         
                                         <td class="label-td" colspan="2">
-                                            <label for="teacher_name" class="form-label">الاسم </label>
+                                            <label for="teacher_name" class="form-label">الاسم واللقب </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="teacher_name" class="input-text" placeholder=" : اسمك" value="'.$teacher_name.'" required><br>
+                                            <input type="text" name="teacher_name" class="input-text" placeholder=" اسمك ولقبك" value="'.$teacher_name.'" required><br>
                                         </td>
                                         
                                     </tr>
@@ -480,7 +499,7 @@
                                     <tr>
                                         <td colspan="2">
                                             <input type="reset" value="إعادة ملىءالصفحة" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        
+                                            <a href="settings.php"><input type="button" value="إلغاء" class="login-btn btn-primary-soft btn" ></a>
                                             <input type="submit" value="حفظ" class="login-btn btn-primary btn">
                                         </td>
                         

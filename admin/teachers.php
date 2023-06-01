@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="../css/pagination.css">
-
-    <title>الأساتذة</title>
-    <style>
-        .popup {
-            animation: transitionIn-Y-bottom 0.5s;
-        }
-
-        .sub-table {
-            animation: transitionIn-Y-bottom 0.5s;
-        }
-
-    </style>
-
-</head>
-
-<body>
-    <?php
+<?php
 
     session_start();
 
@@ -41,6 +13,166 @@
     include("../connection.php");
 
     ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/pagination.css">
+    <link rel="stylesheet" href="../css/icons.css">
+
+    <title>الأساتذة</title>
+    <style>
+        .popup {
+            animation: transitionIn-Y-bottom 0.5s;
+        }
+
+        .sub-table {
+            animation: transitionIn-Y-bottom 0.5s;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+<script language ="JavaScript"> 
+function preventBlankTabs(inputField) {
+  var value = inputField.value.trim(); // Trim whitespace from the input value
+
+  if (value === "") {
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  // Check for blank tabs using regex
+  var regex = /\t+/;
+  if (regex.test(value)) {
+    alert("Tab characters are not allowed");
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  return true; // Allow form submission or further processing
+}
+function rejectSpecialCharacters(inputField) {
+  var value = inputField.value;
+
+  // Check for special characters or numbers using regex
+  var regex = /^[\p{L}\s]*$/u;
+  if (!regex.test(value)) {
+    alert("الأرقام والرموز غير مسموحة هنا، الرجاء إدخال معلومات صحيحة");
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  return true; // Allow form submission or further processing
+}
+
+
+
+function verif1() {
+    if (document.addTeacherForm.teacher_name.value === "") {
+        alert("يرجى ادخال الاسم واللقب");
+        return false;
+    }
+    // Check for blank tab in first name
+    if (!preventBlankTabs(document.addTeacherForm.teacher_name)) {
+     alert(" الرجاء ادخال الاسم واللقب");
+     return false;
+     }
+     // Check for special characters or numbers in first name
+  if (!rejectSpecialCharacters(document.addTeacherForm.teacher_name)) {
+    return false;
+  }
+  if (document.addTeacherForm.teacher_email.value === "") {
+        alert("يرجى ادخال البريد الالكتروني");
+        return false;
+    }
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(document.addTeacherForm.teacher_email.value)) {
+        alert("البريد الالكتروني الذي ادخلته غير صحيح");
+        return false;
+    }
+    if (document.addTeacherForm.teacher_homeaddress.value === "") {
+        alert("يرجى ادخال عنوان المنزل");
+        return false;
+    }
+
+    if (document.addTeacherForm.teacher_phone.value === "") {
+        alert("ادخل رقم الهاتف");
+        return false;
+    }
+
+    var phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(document.addTeacherForm.teacher_phone.value)) {
+        alert("رقم الهاتف خاطئ");
+        return false;
+    }
+
+    
+
+   
+
+    var selectedOptions = document.querySelectorAll('#teacher_job option:checked');
+    if (selectedOptions.length === 0) {
+        alert("يرجى اختيار مهنة واحدة على الأقل!");
+        return false;
+    }
+
+    var selectedOptions = document.querySelectorAll('#teacher_educationallevel option:checked');
+    if (selectedOptions.length === 0) {
+        alert("يرجى اختيار الطور التعليمي واحد على الأقل!");
+        return false;
+    }
+
+    var selectedOptions = document.querySelectorAll('#teacher_scholaryear option:checked');
+    if (selectedOptions.length === 0) {
+        alert("يرجى اختيار السنة الدراسية واحدة على الأقل!");
+        return false;
+    }
+
+    var selectedOptions = document.querySelectorAll('#teacher_class option:checked');
+    if (selectedOptions.length === 0) {
+        alert("يرجى اختيار القسم واحد على الأقل!");
+        return false;
+    }
+
+    if (document.addTeacherForm.teacher_password.value === "") {
+        alert("كلمة السر مطلوبة");
+        return false;
+    }
+
+    if (document.addTeacherForm.confirm_teacher_password.value === "") {
+        alert("الرجاء تأكيد كلمة السر");
+        return false;
+    }
+
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,13}$/;
+    if (!passwordRegex.test(document.addTeacherForm.teacher_password.value)) {
+        alert("كلمة السر غير صحيحة! يجب أن تتكون من 8 إلى 13 حرفًا وتحتوي على حرف كبير وحرف صغير ورقم واحد على الأقل");
+        return false;
+    }
+
+    if (document.addTeacherForm.teacher_password.value !== document.addTeacherForm.confirm_teacher_password.value) {
+        alert("خطأ في تأكيد كلمة السر! الرجاء إعادة تأكيد كلمة السر");
+        return false;
+    }
+}
+
+
+
+
+</script>
+</head>
+
+<body>
+    
 
     <div class="container">
         <div class="menu">
@@ -66,42 +198,46 @@
                     </td>
 
                 </tr>
+        
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-dashbord">
+                    <td class="menu-item">
                         <a href="index.php" class="non-style-link-menu">
-                            <div>
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
                                 <p class="menu-text">الرئيسية</p>
+                            </div>
                         </a>
-        </div></a>
-        </td>
-        </tr>
-        <tr class="menu-row">
-            <td class="menu-btn menu-icon-doctor menu-active menu-icon-doctor-active">
-                <a href="teachers.php" class="non-style-link-menu non-style-link-menu-active">
-                    <div>
-                        <p class="menu-text">الأساتذة</p>
-                </a>
-    </div>
-    </td>
-    </tr>
-    <tr class="menu-row">
-        <td class="menu-btn menu-icon-patient">
-            <a href="students.php" class="non-style-link-menu">
-                <div>
-                    <p class="menu-text">الطلاب</p>
-            </a></div>
-        </td>
-    </tr>
+                    </td>
+                </tr>
+
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="teachers.php" class="non-style-link-menu non-style-link-menu-active">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-person-chalkboard"></i>
+                                <p class="menu-text">الأساتذة</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr class="menu-row">
+                    <td class="menu-item">
+                        <a href="students.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p class="menu-text">الطلاب</p>
+                            </div>
+                        </a>
+                    </td>
+
+</tr>
     </table>
     </div>
     <div class="dash-body">
         <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
             <tr>
-                <td width="13%">
-                    <a href="teachers.php"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
-                            <font class="tn-in-text">الرجوع</font>
-                        </button></a>
-                </td>
+            <?php include("back.php") ?>
                 <td>
 
                     <form action="" method="post" class="header-search">
@@ -185,9 +321,9 @@
                             <?php
                             // $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
 
-                            include 'Pagination.php';
+                            include '../Pagination.php';
 
-                            $records_per_page = 1; // Replace with the desired number of records per page
+                            $records_per_page = 8; // Replace with the desired number of records per page
 
                             // Display pagination links
                             $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
@@ -209,7 +345,7 @@
                             echo '<table width="93%" class="sub-table scrolldown pagination" border="0">';
                             echo '<thead>';
                             echo '<tr>';
-                            echo '<th class="table-headin">اسم الأستاذ</th>';
+                            echo '<th class="table-headin">اسم ولقب الأستاذ</th>';
                             echo '<th class="table-headin">البريد الالكتروني</th>';
                             echo '<th class="table-headin">رقم الهاتف</th>';
                             echo '<th class="table-headin">عنوان المنزل</th>';
@@ -497,14 +633,14 @@
                             </tr>
                             
                             <tr>
-                                <form  action="add-teacher.php" method="POST" class="add-new-form" name="addTeacherForm" >
+                                <form  action="add-teacher.php" method="POST" class="add-new-form" name="addTeacherForm" onsubmit="return verif1()" >
                                 <td class="label-td" colspan="2">
-                                    <label for="teacher_name" class="form-label">الاسم: </label>
+                                    <label for="teacher_name" class="form-label">الاسم واللقب: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="teacher_name" id="teacher_name" class="input-text" placeholder="اسم الأستاذ" required><br>
+                                    <input type="text" name="teacher_name" id="teacher_name" class="input-text" placeholder=" اسم ولقب الأستاذ"><br>
                                 </td>
                                 
                             </tr>
@@ -515,7 +651,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="email" name="teacher_email" id="teacher_email" class="input-text" placeholder="البريد الالكتروني" required><br>
+                                    <input type="text" name="teacher_email" id="teacher_email" class="input-text" placeholder="البريد الالكتروني"><br>
                                 </td>
                             </tr>
                             <tr>
@@ -525,7 +661,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="teacher_homeaddress" id="teacher_homeaddress" class="input-text" placeholder="عنوان المنزل" required><br>
+                                    <input type="text" name="teacher_homeaddress" id="teacher_homeaddress" class="input-text" placeholder="عنوان المنزل"><br>
                                 </td>
                             </tr>
                             <tr>
@@ -535,7 +671,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="tel" name="teacher_phone" id="teacher_phone" class="input-text" placeholder="رقم الهاتف" required><br>
+                                    <input type="tel" name="teacher_phone" id="teacher_phone" class="input-text" placeholder="رقم الهاتف"><br>
                                 </td>
                             </tr>
                             <tr>
@@ -650,7 +786,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="password" name="teacher_password" class="input-text" placeholder="أدخل كلمة سر" required><br>
+                                    <input type="password" name="teacher_password" class="input-text" placeholder="أدخل كلمة سر"><br>
                                 </td>
                             </tr>
                             <tr>
@@ -660,7 +796,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="password" name="confirm_teacher_password" class="input-text" placeholder="أكد كلمة السر" required><br>
+                                    <input type="password" name="confirm_teacher_password" class="input-text" placeholder="أكد كلمة السر"><br>
                                 </td>
                             </tr>
                             
@@ -668,7 +804,7 @@
                             <tr>
                                 <td colspan="2">
                                     <input type="reset" value="أعد ملأ الصفحة" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                
+                                    <a href="teachers.php"><input type="button" value="إلغاء" class="login-btn btn-primary-soft btn" ></a>
                                     <input type="submit" value="أضف" class="login-btn btn-primary btn">
                                 </td>
                 
@@ -770,7 +906,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <form action="edit-teacher.php" method="POST" class="add-new-form">
+                                            <form action="edit-teacher.php" method="POST" class="add-new-form" name="f" onsubmit="return verif()">
                                             <label for="teacher_email" class="form-label">:البريد الالكتروني </label>
                                             <input type="hidden" value="' . $teacher_id . '" name="teacher_id">
                                             <input type="hidden" name="oldemail" value="' . $teacher_email . '" >
@@ -778,18 +914,18 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                        <input type="email" name="teacher_email" class="input-text" placeholder="البريد الالكتروني" value="' . $teacher_email . '" required><br>
+                                        <input type="text" name="teacher_email" class="input-text" placeholder="البريد الالكتروني" value="' . $teacher_email . '"><br>
                                         </td>
                                     </tr>
                                     <tr>
                                         
                                         <td class="label-td" colspan="2">
-                                            <label for="teacher_name" class="form-label">:الاسم </label>
+                                            <label for="teacher_name" class="form-label">: الاسم واللقب </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="teacher_name" class="input-text" placeholder="اسم الأستاذ" value="' . $teacher_name . '" required><br>
+                                            <input type="text" name="teacher_name" class="input-text" placeholder="اسم ولقب الأستاذ" value="' . $teacher_name . '"><br>
                                         </td>
                                         
                                     </tr>
@@ -801,7 +937,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="teacher_homeaddress" class="input-text" placeholder="عنوان المنزل" value="' . $teacher_homeaddress . '" required><br>
+                                            <input type="text" name="teacher_homeaddress" class="input-text" placeholder="عنوان المنزل" value="' . $teacher_homeaddress . '"><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -811,7 +947,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="tel" name="teacher_phone" class="input-text" placeholder="رقم الهاتف" value="' . $teacher_phone . '" required><br>
+                                            <input type="tel" name="teacher_phone" class="input-text" placeholder="رقم الهاتف" value="' . $teacher_phone . '"><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -928,7 +1064,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="teacher_password" class="input-text" placeholder=":أدخل كلمة سر" required><br>
+                                            <input type="password" name="teacher_password" class="input-text" placeholder=":أدخل كلمة سر"><br>
                                         </td>
                                     </tr><tr>
                                         <td class="label-td" colspan="2">
@@ -937,7 +1073,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="confirm_teacher_password" class="input-text" placeholder="أكد كلمة السر" required><br>
+                                            <input type="password" name="confirm_teacher_password" class="input-text" placeholder="أكد كلمة السر"><br>
                                         </td>
                                     </tr>
                                     
@@ -945,7 +1081,7 @@
                                     <tr>
                                         <td colspan="2">
                                             <input type="reset" value="أعد ملأ الصفحة" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        
+                                            <a href="teachers.php"><input type="button" value="إلغاء" class="login-btn btn-primary-soft btn" ></a>
                                             <input type="submit" value="حفظ" class="login-btn btn-primary btn">
                                         </td>
                         
@@ -993,5 +1129,171 @@
     </div>
 
 </body>
+<script>
+
+
+   
+        function preventBlankTabs(inputField) {
+  var value = inputField.value.trim(); // Trim whitespace from the input value
+
+  if (value === "") {
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  // Check for blank tabs using regex
+  var regex = /\t+/;
+  if (regex.test(value)) {
+    alert("يرجى ادخال المعلومات ");
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  return true; // Allow form submission or further processing
+}
+
+function rejectSpecialCharacters(inputField) {
+  var value = inputField.value;
+
+  // Check for special characters or numbers using regex
+  var regex = /^[\p{L}\s]*$/u;
+  if (!regex.test(value)) {
+    alert("يرجى عدم ادخال رموز خاصة");
+    inputField.value = ""; // Clear the input field
+    return false; // Prevent form submission or further processing
+  }
+
+  return true; // Allow form submission or further processing
+}
+
+        function verif() {
+             // email
+          if (document.f.teacher_email.value == "") {
+            alert("! خانة البريد الالكتروني فارغة, يرجر إدخال البريد الالكتروني ");
+            return false;
+          };
+          var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          if (!emailPattern.test(document.f.teacher_email.value)) {
+            alert("تم إدخال بريد الكتروني غير صالح, يرجي إدخال بريد الكتروني صالح");
+            return false;
+          };
+        
+
+          if (document.f.teacher_name.value == "") {
+            alert("  ادخل الاسم و اللقب");
+            return false;
+          };
+     // Check for blank tab in first name
+     if (!preventBlankTabs(document.f.teacher_name)) {
+     alert(" ادخل الاسم و اللقب ");
+     return false;
+     };
+
+  // Check for special characters or numbers in first name
+  if (!rejectSpecialCharacters(document.f.teacher_name)) {
+    return false;
+  };
+          // address 
+          if (document.f.teacher_homeaddress.value == "") {
+            alert(" ادخل العنوان ");
+            return false;
+          };
+
+           // Check for blank tab in first name
+     if (!preventBlankTabs(document.f.teacher_homeaddress)) {
+   alert(" ادخل العنوان ");
+     return false;
+     };
+
+    
+ 
+  if (document.f.teacher_phone.value == "") {
+            alert(" ادخل رقم الهاتف");
+            return false;
+          };
+            // Check for blank tab in first name
+     if (!preventBlankTabs(document.f.teacher_phone)) {
+    alert(" ادخل رقم الهاتف");
+     return false;
+     };
+
+  var v = 1;
+          var phone = document.f.teacher_phone.value;
+          var size = phone.length;
+
+          for (i = 0; i < size; ++i) {
+            if (
+              phone.charAt(i) < "0" ||
+              phone.charAt(i) > "9" ||
+              size != 10 ||
+              !/^[a-zA-Z0-9]+$/.test(phone)
+            ) {
+              v = -1;
+            }
+          };
+
+          if (v == -1) {
+            alert("رقم الهاتف خاطئ");
+            return false;
+          };
+
+
+    var phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(document.f.teacher_phone.value)) {
+        alert("رقم الهاتف خاطئ");
+        return false;
+    };
+          // end phone number
+
+    // password
+          if (document.f.teacher_password.value == "") {
+            alert("ادخل كلمة السر ");
+            return false;
+          };
+          var taille = document.f.teacher_password.value.length;
+          if (taille < 8 || taille > 13) {
+            alert("يجب ان تحتوي كلمة السر على 8 الى 13 رمز");
+            return false;
+          };
+          var hasNumber = false;
+          var hasLetter = false;
+          var hasUppercase = false;
+
+          for (var i = 0; i < taille; i++) {
+            var char = document.f.teacher_password.value.charAt(i);
+
+            if (/[0-9]/.test(char)) {
+              hasNumber = true;
+            } else if (/[a-zA-Z]/.test(char)) {
+              hasLetter = true;}
+              if (char === char.toUpperCase()) {
+                hasUppercase = true;
+              }
+            };
+        
+          v = hasNumber && hasLetter && hasUppercase;
+          if (v == false) {
+            alert("كلمة السر خاطئة  ");
+            return false;
+          };
+         
+         
+        if (document.f.confirm_teacher_password.value === "") {
+    alert("يجب تاكيد كلمة السر ");
+    return false;
+  };
+
+ 
+
+  if (document.f.teacher_password.value !== document.f.confirm_teacher_password.value) {
+    alert("حدث خطأ في تاكيد كلمة المرور يرجى اعادة ادخالها ");
+    return false;
+  };
+        }
+
+
+      </script>
+
+
 
 </html>

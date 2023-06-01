@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         
     <title>دفتر المتابعة</title>
     <style>
@@ -67,33 +71,55 @@
                     </td>
                 
                 </tr>
-
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-home" >
-                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">الرئيسية</p></a></div></a>
+             
+                <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="index.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
+                                <p class="menu-text">الرئيسية</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                 <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="followup-notebook.php" class="non-style-link-menu non-style-link-menu-active">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <p class="menu-text"> دفتر المتابعة</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                 <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="assignment.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                                <p class="menu-text">الواجبات المنزلية</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-doctor menu-active menu-icon-doctor-active">
-                        <a href="followup-notebook.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text"> دفتر المتابعة</p></a></div>
+                    <td class="menu-btn">
+                        <a href="done-assignment.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <p class="menu-text">الواجبات التامة</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
-                
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-appoinment">
-                        <a href="assignment.php" class="non-style-link-menu"><div><p class="menu-text">الواجبات المنزلية  </p></div></a>
-                    </td>
-                </tr>
-
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-appoinment">
-                        <a href="done-assignment.php" class="non-style-link-menu"><div><p class="menu-text">الواجبات التامة  </p></div></a>
-                    </td>
-                </tr>
-               
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">الإعدادات</p></a></div>
+                <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="settings.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-gears"></i>
+                                <p class="menu-text">الإعدادت</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/pagination.css">
+    <link rel="stylesheet" href="../css/icons.css">
         
     <title>الواجبات المنزلية</title>
     <style>
@@ -17,6 +19,8 @@
             animation: transitionIn-Y-bottom 0.5s;
         }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
     <?php
@@ -48,39 +52,44 @@
             <table class="menu-container" border="0">
             <?php include("profile.php"); ?>
 
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-dashbord">
+            <tr class="menu-row">
+            <td class="menu-btn">
                         <a href="index.php" class="non-style-link-menu">
-                            <div>
-                                <p class="menu-text">الرئيسية</p>
-                        </a>
-                    </div></a>
-                    </td>
-                </tr>
-
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-patient">
-                        <a href="student.php" class="non-style-link-menu">
-                            <div>
-                            <p class="menu-text">طلابي</p>
-                            </a>
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
+                                <p class="menu-text"> الرئيسية</p>
                             </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-schedule menu-active menu-icon-schedule-active">
+                    <td class="menu-btn">
+                        <a href="student.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p class="menu-text">طلابي</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn">
                         <a href="assignment.php" class="non-style-link-menu non-style-link-menu-active">
-                            <div>
-                            <p class="menu-text">الواجبات المنزلية لطلابي</p>
-                        </a></div>
+                            <div class="menu-content">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <p class="menu-text">الواجبات المنزلية</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-settings">
+                    <td class="menu-btn">
                         <a href="settings.php" class="non-style-link-menu">
-                            <div>
-                                <p class="menu-text">الإعدادات</p>
-                        </a></div>
+                            <div class="menu-content">
+                                <i class="fa-solid fa-gears"></i>
+                                <p class="menu-text">الإعدادت</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
 
@@ -89,11 +98,9 @@
         <div class="dash-body">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
-                    <td width="13%" >
-                    <a href="index.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">رجوع</font></button></a>
-                    </td>
+                <?php include("back.php") ?>
                     <td>
-                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Shedule Manager</p>
+                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">الواجبات المنزلية لطلابي</p>
                                            
                     </td>
                     <td width="15%">
@@ -134,7 +141,7 @@
                            <td width="10%">
 
                            </td> 
-                        <td width="5%" style="text-align: center;">
+                        <!-- <td width="5%" style="text-align: center;">
                         Date:
                         </td>
                         <td width="30%">
@@ -152,21 +159,21 @@
                                 
                             <?php 
                             
-                                $list11 = $database->query("select  * from teacher order by teacher_name asc;");
+                                // $list11 = $database->query("select  * from teacher order by teacher_name asc;");
 
-                                for ($y=0;$y<$list11->num_rows;$y++){
-                                    $row00=$list11->fetch_assoc();
-                                    $sn=$row00["teacher_name"];
-                                    $id00=$row00["teacher_id"];
-                                    echo "<option value=".$id00.">$sn</option><br/>";
-                                };
+                                // for ($y=0;$y<$list11->num_rows;$y++){
+                                //     $row00=$list11->fetch_assoc();
+                                //     $sn=$row00["teacher_name"];
+                                //     $id00=$row00["teacher_id"];
+                                //     echo "<option value=".$id00.">$sn</option><br/>";
+                                // };
 
 
                                 ?>
 
                         </select>
-                    </td>
-                    <td width="12%">
+                    </td> -->
+                    <!-- <td width="12%">
                         <input type="submit"  name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
                         </form>
                     </td>
@@ -175,7 +182,7 @@
                             </table>
 
                         </center>
-                    </td>
+                    </td> -->
                     
                 </tr>
                 
@@ -223,6 +230,117 @@
                    <td colspan="4">
                        <center>
                         <div class="abc scroll">
+
+                        <div class="abc scroll">
+
+                        <?php
+                            // $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
+
+                            include '../Pagination.php';
+
+                            $records_per_page = 1; // Replace with the desired number of records per page
+
+                            // Display pagination links
+                            $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
+                            // Instantiate the Pagination class
+
+
+                            // Get the current page
+
+                            // Calculate the offset for SQL query
+
+
+                            // Execute the modified query
+                            $result = $database->query($sqlmain);
+                            $pagination = new Pagination($result->num_rows, $records_per_page);
+                            $current_page = $pagination->getCurrentPage();
+                            $offset = ($current_page - 1) * $records_per_page;
+                            $sqlmain = $sqlmain . " LIMIT $offset, $records_per_page";
+                            echo '<table width="93%" class="sub-table scrolldown pagination" border="0">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th class="table-headin">رقم الواجب المنزلي </th>';
+                            echo '<th class="table-headin">  الطالب</th>';
+                            echo '<th class="table-headin"> تاريخ وضع الواجب</th>';
+                            echo '<th class="table-headin">  تاريخ استلام الواجب</th>';
+                            echo '<th class="table-headin">الأحداث </th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody>';
+                          
+                                    
+                                
+                            
+          
+                                
+                                
+                            if($result->num_rows==0){
+                                echo '<tr>
+                                <td colspan="4">
+                                <br><br><br><br>
+                                <center>
+                                <img src="../img/notfound.svg" width="25%">
+                                
+                                <br>
+                                <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)"> !لم نستطع إيجاد أي شيء متعلق بكلمة بحثك</p>
+                                <a class="non-style-link" href="assignment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; أظهر جميع الواجبات المنزلية &nbsp;</font></button>
+                                </a>
+                                </center>
+                                <br><br><br><br>
+                                </td>
+                                </tr>';
+                                
+                            }
+                            else{
+                            for ( $x=0; $x<$result->num_rows;$x++){
+                                $row=$result->fetch_assoc();
+                                $assignment_id=$row["assignment_id"];
+                                $title=$row["assignment_title"];
+                                $student_name=$row["student_name"];
+                                $assignment_startdate=$row["assignment_startdate"];
+                                $assignment_enddate=$row["assignment_enddate"];
+                               
+                                echo '<tr>
+                                    <td> &nbsp;'.
+                                    substr($title,0,30)
+                                    .'</td>
+                                    <td>
+                                    '.substr($student_name,0,20).'
+                                    </td>
+                                    <td style="text-align:center;">
+                                        '.substr($assignment_startdate,0,10).' 
+                                    </td>
+                                    <td style="text-align:center;">
+                                        '.substr($assignment_enddate,0,10).'
+                                    </td>
+
+                                    <td>
+                                    <div style="display:flex;justify-content: center;">
+                                    
+                                    <a href="?action=view&id='.$assignment_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">إظهار</font></button></a>
+                                   &nbsp;&nbsp;&nbsp;
+                                   <a href="?action=drop&id='.$assignment_id.'&name='.$title.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">إلغاء</font></button></a>
+                                    </div>
+                                    </td>
+                                </tr>';
+                                
+                            }
+                        }
+                            echo '</tbody>';
+                            echo '</table>';
+
+                            // Display pagination links
+                            $page_url = $_SERVER['PHP_SELF']; // Change this to the URL of the page
+                            echo '<div class="pagination-links">';
+                            echo $pagination->getPreviousLink($page_url);
+                            echo $pagination->getPaginationLinks($page_url);
+                            echo $pagination->getNextLink($page_url);
+                            echo '</div>';
+
+                            ?>
+                        </div>
+
+                        <?php // *************************** pagination changes ?>
                         <table width="93%" class="sub-table scrolldown" border="0">
                         <thead>
                         <tr>
@@ -255,65 +373,10 @@
                         </thead>
                         <tbody>
                         
-                            <?php
+                          
 
                                 
-                                $result= $database->query($sqlmain);
 
-                                if($result->num_rows==0){
-                                    echo '<tr>
-                                    <td colspan="4">
-                                    <br><br><br><br>
-                                    <center>
-                                    <img src="../img/notfound.svg" width="25%">
-                                    
-                                    <br>
-                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)"> !لم نستطع إيجاد أي شيء متعلق بكلمة بحثك</p>
-                                    <a class="non-style-link" href="assignment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; أظهر جميع الواجبات المنزلية &nbsp;</font></button>
-                                    </a>
-                                    </center>
-                                    <br><br><br><br>
-                                    </td>
-                                    </tr>';
-                                    
-                                }
-                                else{
-                                for ( $x=0; $x<$result->num_rows;$x++){
-                                    $row=$result->fetch_assoc();
-                                    $assignment_id=$row["assignment_id"];
-                                    $title=$row["assignment_title"];
-                                    $student_name=$row["student_name"];
-                                    $assignment_startdate=$row["assignment_startdate"];
-                                    $assignment_enddate=$row["assignment_enddate"];
-                                   
-                                    echo '<tr>
-                                        <td> &nbsp;'.
-                                        substr($title,0,30)
-                                        .'</td>
-                                        <td>
-                                        '.substr($student_name,0,20).'
-                                        </td>
-                                        <td style="text-align:center;">
-                                            '.substr($assignment_startdate,0,10).' 
-                                        </td>
-                                        <td style="text-align:center;">
-                                            '.substr($assignment_enddate,0,10).'
-                                        </td>
-
-                                        <td>
-                                        <div style="display:flex;justify-content: center;">
-                                        
-                                        <a href="?action=view&id='.$assignment_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">إظهار</font></button></a>
-                                       &nbsp;&nbsp;&nbsp;
-                                       <a href="?action=drop&id='.$assignment_id.'&name='.$title.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">إلغاء</font></button></a>
-                                        </div>
-                                        </td>
-                                    </tr>';
-                                    
-                                }
-                            }
-                                 
-                            ?>
  
                             </tbody>
 
