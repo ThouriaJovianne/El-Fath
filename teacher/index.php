@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/icons.css">
 
     <title>الأستاذ</title>
     <style>
@@ -29,7 +30,8 @@
             animation: transitionIn-Y-over 0.5s;
         }
     </style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 </head>
 
@@ -61,42 +63,45 @@
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
-
-
             <?php include("profile.php"); ?>
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-dashbord menu-active menu-icon-dashbord-active">
+            <tr class="menu-row">
+            <td class="menu-btn">
                         <a href="index.php" class="non-style-link-menu non-style-link-menu-active">
-                            <div>
-                                <p class="menu-text">الرئيسية</p>
-                        </a>
-                    </div></a>
-                    </td>
-                </tr>
-
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-patient">
-                        <a href="student.php" class="non-style-link-menu">
-                            <div>
-                            <p class="menu-text">طلابي</p>
-                            </a>
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
+                                <p class="menu-text"> الرئيسية</p>
                             </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-schedule">
+                    <td class="menu-btn">
+                        <a href="student.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p class="menu-text">طلابي</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn">
                         <a href="assignment.php" class="non-style-link-menu">
-                            <div>
-                            <p class="menu-text">الواجبات المنزلية لطلابي</p>
-                        </a></div>
+                            <div class="menu-content">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <p class="menu-text">الواجبات المنزلية</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-settings">
+                    <td class="menu-btn">
                         <a href="settings.php" class="non-style-link-menu">
-                            <div>
-                                <p class="menu-text">الإعدادات</p>
-                        </a></div>
+                            <div class="menu-content">
+                                <i class="fa-solid fa-gears"></i>
+                                <p class="menu-text">الإعدادت</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
 
@@ -188,21 +193,20 @@
                                 </tr>
                                 <tr>
 
+                               
                                     <td style="width: 25%;">
-                                        <div class="dashboard-items"
-                                            style="padding:20px;margin:auto;width:95%;display: flex;">
-                                            <div>
-                                                <div class="h1-dashboard">
-                                                    <?php echo $studentrow->num_rows ?>
-                                                </div><br>
-                                                <div class="h3-dashboard">
-                                                    عدد طلابي&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div class="dashboard-items" style="padding:20px;margin:auto;width:95%;display: flex;">
+                                                <div>
+                                                    <div class="h1-dashboard">
+                                                        <?php echo $studentrow->num_rows ?>
+                                                    </div><br>
+                                                    <div class="h3-dashboard">
+                                                        عدد طلابي&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    </div>
                                                 </div>
+                                                <div class="btn-icon-back dashboard-icons"><i class="fa-solid fa-graduation-cap"></i></div>
                                             </div>
-                                            <div class="btn-icon-back dashboard-icons"
-                                                style="background-image: url('../img/icons/patients-hover.svg');"></div>
-                                        </div>
-                                    </td>
+                                        </td>
                                 </tr>
                                 <tr>
 

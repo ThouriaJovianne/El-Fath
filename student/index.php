@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/icons.css">
         
     <title>الصفحة الرسمية :الطالب </title>
     <style>
@@ -20,7 +21,8 @@
             animation: transitionIn-Y-bottom 0.5s;
         }
     </style>
-    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
 </head>
 <body>
@@ -69,34 +71,63 @@
                     </table>
                     </td>
                 </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-home menu-active menu-icon-home-active" >
-                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">الرئيسية</p></a></div></a>
+                                
+<tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active">
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
+                                <p class="menu-text">الرئيسية</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                 <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="followup-notebook.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <p class="menu-text"> دفتر المتابعة</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                 <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="assignment.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                                <p class="menu-text">الواجبات المنزلية</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-doctor">
-                        <a href="followup-notebook.php" class="non-style-link-menu"><div><p class="menu-text"> دفتر المتابعة</p></a></div>
+                    <td class="menu-btn">
+                        <a href="done-assignment.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <p class="menu-text">الواجبات التامة</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
-                
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-appoinment">
-                        <a href="assignment.php" class="non-style-link-menu"><div><p class="menu-text">الواجبات المنزلية  </p></div></a>
+                <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="settings.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-gears"></i>
+                                <p class="menu-text">الإعدادت</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
+             
 
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-appoinment">
-                        <a href="done-assignment.php" class="non-style-link-menu"><div><p class="menu-text">الواجبات التامة  </p></div></a>
-                    </td>
-                </tr>
+
+                
                
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">الإعدادات</p></a></div>
-                    </td>
-                </tr>
+  
                 
             </table>
         </div>
@@ -113,21 +144,16 @@
 
                             </td>
                             <td width="15%">
-                                <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                                    تاريخ اليوم
-                                </p>
-                                <p class="heading-sub12" style="padding: 0;margin: 0;">
-                                    <?php 
-                                date_default_timezone_set('Africa/Algiers');
-        
-                                $today = date('Y-m-d');
-                                echo $today;
-
+                                
+                            <?php include("../date.php");
 
                                 $studentrow = $database->query("select  * from  student;");
                                 $teacherrow = $database->query("select  * from  teacher;");
-                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                $assignmentrow = $database->query("select  * from  assignment where assignment_startdate='$today';");
+                                $assignmentrow = $database->query("select * from assignment where student_id = $userid");
+                                // This one should be about approved-done-assignment
+                                
+                                // $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
+                                // $assignmentrow = $database->query("select  * from  assignment where assignment_startdate='$today';");
 
 
                                 ?>
@@ -175,7 +201,7 @@
                                         <table class="filter-container" style="border: none;" border="0">
                                             <tr>
                                                 <td colspan="4">
-                                                    <p style="font-size: 20px;font-weight:600;padding-left: 12px;">Status</p>
+                                                    <p style="font-size: 20px;font-weight:600;padding-left: 12px;">الإنجازات</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -183,58 +209,18 @@
                                                     <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex">
                                                         <div>
                                                                 <div class="h1-dashboard">
-                                                                    <?php    echo $teacherrow->num_rows  ?>
+                                                                    <?php    echo $assignmentrow->num_rows  ?>
                                                                 </div><br>
                                                                 <div class="h3-dashboard">
-                                                                    انجازاتي  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    إنجازاتي  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </div>
                                                         </div>
-                                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
+                                                                <div class="btn-icon-back dashboard-icons"><i class="fa-solid fa-check"></i></div></div>
                                                     </div>
                                                 </td>
-                                                <!-- <td style="width: 25%;">
-                                                    <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex;">
-                                                        <div>
-                                                                <div class="h1-dashboard">
-                                                                    <?php   // echo $patientrow->num_rows  ?>
-                                                                </div><br>
-                                                                <div class="h3-dashboard">
-                                                                    All Patients &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                </div>
-                                                        </div>
-                                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
-                                                    </div>
-                                                </td> -->
+
                                                 </tr>
                                                 <tr>
-                                                <!-- <td style="width: 25%;">
-                                                    <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex; ">
-                                                        <div>
-                                                                <div class="h1-dashboard" >
-                                                                    <?php    //echo $appointmentrow ->num_rows  ?>
-                                                                </div><br>
-                                                                <div class="h3-dashboard" >
-                                                                    NewBooking &nbsp;&nbsp;
-                                                                </div>
-                                                        </div>
-                                                                <div class="btn-icon-back dashboard-icons" style="margin-left: 0px;background-image: url('../img/icons/book-hover.svg');"></div>
-                                                    </div>
-                                                    
-                                                </td> -->
-
-                                                <!-- <td style="width: 25%;">
-                                                    <div  class="dashboard-items"  style="padding:20px;margin:auto;width:95%;display: flex;padding-top:21px;padding-bottom:21px;">
-                                                        <div>
-                                                                <div class="h1-dashboard">
-                                                                    <?php   // echo $schedulerow ->num_rows  ?>
-                                                                </div><br>
-                                                                <div class="h3-dashboard" style="font-size: 15px">
-                                                                    Today Sessions
-                                                                </div>
-                                                        </div>
-                                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
-                                                    </div>
-                                                </td> -->
                                                 
                                             </tr>
                                         </table>
@@ -282,7 +268,7 @@
                                         
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
-                                                $sqlmain= "select * from assignment inner join appointment on assignment.assignment_id=appointment.scheduleid inner join student on student.student_id=appointment.pid inner join teacher on assignment.student_id=student.student_id  where  student.student_id=$userid  and assignment.assignment_enddate>='$today' order by assignment.assignment_startdate asc";
+                                                $sqlmain = "select * from assignment where student_id=$userid and assignment_enddate>='$today' order by assignment_startdate asc";
                                         
                                                 $result= $database->query($sqlmain);
                 
@@ -306,16 +292,14 @@
                                                 else{
                                                 for ( $x=0; $x<$result->num_rows;$x++){
                                                     $row=$result->fetch_assoc();
-                                                    $scheduleid=$row["scheduleid"];
-                                                    $title=$row["title"];
-                                                    $apponum=$row["apponum"];
-                                                    $docname=$row["docname"];
+                                                    
+                                                    $assignment_title=$row["assignment_title"];
                                                     $assignment_startdate=$row["assignment_startdate"];
                                                     $assignment_enddate=$row["assignment_enddate"];
                                                    
                                                     echo '<tr>
                                                         <td style="padding:30px;font-size:25px;font-weight:700;"> &nbsp;'.
-                                                        $apponum
+                                                            $assignment_title
                                                         .'</td>
                                                         <td style="padding:20px;"> &nbsp;'
                                                         .substr($assignment_startdate,0,10).

@@ -444,16 +444,13 @@ input[type=search]:focus {
 
 
 .btn-icon-back{
-  background-image: url('../img/icons/back-iceblue.svg');
+
   background-position: 18px 50%;
   background-repeat: no-repeat;
   transition: 0.5s;
-  padding: 8px 20px 8px 40px;
+  padding: 8px 20px;
 }
 
-.btn-icon-back:hover{
-  background-image: url('../img/icons/back-white.svg');
-}
 
 
 .btn-edit{

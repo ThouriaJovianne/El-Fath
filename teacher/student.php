@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/pagination.css">
+    <link rel="stylesheet" href="../css/icons.css">
         
     <title>طلابي</title>
     <style>
@@ -17,6 +19,8 @@
             animation: transitionIn-Y-bottom 0.5s;
         }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
     <?php
@@ -65,28 +69,44 @@
                     </table>
                     </td>
                 </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-dashbord" >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">الرئيسية</p></a></div></a>
-                    </td>
-                </tr>
-                
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-patient menu-active menu-icon-patient-active">
-                        <a href="student.php" class="non-style-link-menu  non-style-link-menu-active"><div><p class="menu-text">طلابي</p></a></div>
+                <tr class="menu-row">
+            <td class="menu-btn">
+                        <a href="index.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fas fa-th-large"></i>
+                                <p class="menu-text"> الرئيسية</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-schedule">
-                        <a href="assignment.php" class="non-style-link-menu">
-                            <div>
-                            <p class="menu-text">الواجبات المنزلية لطلابي</p>
-                        </a></div>
+                    <td class="menu-btn">
+                        <a href="student.php" class="non-style-link-menu non-style-link-menu-active">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p class="menu-text">طلابي</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
-                <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-settings   ">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">الإعدادات</p></a></div>
+                <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="assignment.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <p class="menu-text">الواجبات المنزلية</p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn">
+                        <a href="settings.php" class="non-style-link-menu">
+                            <div class="menu-content">
+                                <i class="fa-solid fa-gears"></i>
+                                <p class="menu-text">الإعدادت</p>
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 
@@ -127,11 +147,7 @@
         <div class="dash-body">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
-                    <td width="13%">
-
-                    <a href="student.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">رجوع</font></button></a>
-                        
-                    </td>
+                <?php include("back.php") ?>
                     <td>
                         
                         <form action="" method="post" class="header-search">
@@ -176,80 +192,49 @@
                     </td>
                     
                 </tr>
-                <tr>
-                    <td colspan="4" style="padding-top:0px;width: 100%;" >
-                        <center>
-                        <table class="filter-container" border="0" >
-                        <td width="12%">
-                        <input type="submit"  name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
-                        </form>
-                    </td>
-                        <form action="" method="post">
-                        <td width="30%">
-                        <select name="showonly" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;" >
-                                    <option value="" disabled selected hidden><?php echo "طلابي فقط "   ?></option><br/>
-                                    <option value="my">طلابي فقط </option><br/>
-                                    <option value="all">جميع الطلبة</option><br/>
-                                    
-
-                        </select>
-                    </td>
-                    
-                        <td  style="text-align: right;">
-                        :إظهار بيانات حول  &nbsp;
-                        </td>
-                        
-                   
-
-                    </tr>
-                            </table>
-
-                        </center>
-                    </td>
-                    
-                </tr>
+            
                   
                 <tr>
                    <td colspan="4">
                        <center>
                         <div class="abc scroll">
-                        <table width="93%" class="sub-table scrolldown"  style="border-spacing:0;">
-                        <thead>
-                        <tr>
-                                <th class="table-headin">
-                                    
-                                
-                                اسم الطالب
-                                
-                                </th>
-                                <th class="table-headin">
-                                    البريد الالكتروني
-                                </th>
-                                <th class="table-headin">
-                                    
-                                    رقم الهاتف
-                                    
-                                </th>
-                                <th class="table-headin">
-                                    
-                                    عنوان المنزل
-                                    
-                                </th>
-                                <th class="table-headin">
-                                    
-                                    الحفظ والمراجعة
-                                    
-                                </tr>
-                        </thead>
-                        <tbody>
-                        
-                            <?php
 
-                                
-                                $result= $database->query($sqlmain);
-                               
-                                if($result->num_rows==0){
-                                    echo '<tr>
+                        <?php
+                            // $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
+
+                            include '../Pagination.php';
+
+                            $records_per_page = 1; // Replace with the desired number of records per page
+
+                            // Display pagination links
+                            $page_url = "http://localhost/masjid/admin/teachers.php"; // Replace with the URL of your page
+                            // Instantiate the Pagination class
+
+
+                            // Get the current page
+
+                            // Calculate the offset for SQL query
+
+
+                            // Execute the modified query
+                            $result = $database->query($sqlmain);
+                            $pagination = new Pagination($result->num_rows, $records_per_page);
+                            $current_page = $pagination->getCurrentPage();
+                            $offset = ($current_page - 1) * $records_per_page;
+                            $sqlmain = $sqlmain . " LIMIT $offset, $records_per_page";
+                            echo '<table width="93%" class="sub-table scrolldown pagination" border="0">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th class="table-headin">اسم الطالب</th>';
+                            echo '<th class="table-headin">البريد الالكتروني</th>';
+                            echo '<th class="table-headin">رقم الهاتف</th>';
+                            echo '<th class="table-headin">عنوان المنزل</th>';
+                            echo '<th class="table-headin">الحفظ والمراجعة</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody>';
+                            if ($result->num_rows == 0) {
+                                echo '<tr>
                                     <td colspan="4">
                                     <br><br><br><br>
                                     <center>
@@ -263,30 +248,32 @@
                                     <br><br><br><br>
                                     </td>
                                     </tr>';
-                                    
-                                }
-                                else{
-                                for ( $x=0; $x<$result->num_rows;$x++){
-                                    $row=$result->fetch_assoc();
-                                    $student_id=$row["student_id"];
+                            } else {
+                                $starting_record = ($current_page - 1) * $records_per_page;
+                                $ending_record = $starting_record + $records_per_page - 1;
+
+                                // Move the result pointer to the starting record
+                                $result->data_seek($starting_record);
+                                for ($x = $starting_record; $x <= $ending_record && $row = $result->fetch_assoc(); $x++) {
+                                    $student_id = $row["student_id"];
                                     $_SESSION['student_id'] = $student_id;
-                                    $student_name=$row["student_name"];
-                                    $student_email=$row["student_email"];
-                                    $student_homeaddress=$row["student_homeaddress"];
-                                    $student_phone=$row["student_phone"];
-                                    
+                                    $student_name = $row["student_name"];
+                                    $student_email = $row["student_email"];
+                                    $student_homeaddress = $row["student_homeaddress"];
+                                    $student_phone = $row["student_phone"];
+
                                     echo '<tr>
-                                        <td> &nbsp;'.
-                                        substr($student_name,0,35)
-                                        .'</td>
+                                        <td> &nbsp;' .
+                                        substr($student_name, 0, 35)
+                                        . '</td>
                                         <td>
-                                        '.substr($student_email,0,12).'
+                                        ' . substr($student_email, 0, 12) . '
                                         </td>
                                         <td>
-                                            '.substr($student_phone,0,10).'
+                                            ' . substr($student_phone, 0, 10) . '
                                         </td>
                                         <td>
-                                        '.substr($student_homeaddress,0,20).'
+                                        ' . substr($student_homeaddress, 0, 20) . '
                                          </td>
                                         <td >
                                         <div style="display:flex;justify-content: center;">
@@ -300,148 +287,29 @@
                                         </div>
                                         </td>
                                     </tr>';
-                                    
                                 }
                             }
-                                 
+                            echo '</tbody>';
+                            echo '</table>';
+
+                            // Display pagination links
+                            $page_url = $_SERVER['PHP_SELF']; // Change this to the URL of the page
+                            echo '<div class="pagination-links">';
+                            echo $pagination->getPreviousLink($page_url);
+                            echo $pagination->getPaginationLinks($page_url);
+                            echo $pagination->getNextLink($page_url);
+                            echo '</div>';
+
                             ?>
- 
-                            </tbody>
-
-                        </table>
                         </div>
-                        </center>
-                   </td> 
-                </tr>
-                       
-                        
-                        
-            </table>
         </div>
+        <?php
+
+        ?>
     </div>
-  <?php
-    // if($_GET){
-
-        
-        // $student_id=$_GET["id"];
-        // $action=$_GET["action"];
-        // if($action=='edit') {
-        //     $sqlmain= "select * from student where student_id='$student_id'";
-        //     $result= $database->query($sqlmain);
-        //     $row=$result->fetch_assoc();
-        //     $student_name=$row["student_name"];
-        //     $student_email=$row["student_email"];
-        //     $student_homeaddress=$row["student_homeaddress"];
-        //     $student_phone=$row["student_phone"];
-           
-        //     echo '
-            // <div id="popup1" class="overlay">
-            //         <div class="popup">
-            //         <center>
-            //             <a class="close" href="daftar-elmutaba3a.php">&times;</a>
-            //             <div class="content">
-
-            //             </div>
-            //             <div style="display: flex;justify-content: center;">
-            //             <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
-                        
-            //                 <tr>
-            //                     <td>
-            //                         <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">دفتر المتابعة</p><br><br>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-                                
-            //                     <td class="label-td" colspan="2">
-            //                         <label for="name" class="form-label">Patient ID: </label>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                         P-'.$student_id.'<br><br>
-            //                     </td>
-                                
-            //                 </tr>
-                            
-            //                 <tr>
-                                
-            //                     <td class="label-td" colspan="2">
-            //                         <label for="name" class="form-label">Name: </label>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                         '.$student_name.'<br><br>
-            //                     </td>
-                                
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                         <label for="Email" class="form-label">Email: </label>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                     '.$student_email.'<br><br>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                         <label for="nic" class="form-label">NIC: </label>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                     '.$student_homeaddress.'<br><br>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                         <label for="Tele" class="form-label">Telephone: </label>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                     '.$student_phone.'<br><br>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td class="label-td" colspan="2">
-            //                         <label for="spec" class="form-label">Address: </label>
-                                    
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-                                
-            //                     <td class="label-td" colspan="2">
-            //                         <label for="name" class="form-label">Date of Birth: </label>
-            //                     </td>
-            //                 </tr>
-            //                 <tr>
-            //                     <td colspan="2">
-            //                         <a href="student.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
-                                
-                                    
-            //                     </td>
-                
-            //                 </tr>
-                           
-
-            //             </table>
-            //             </div>
-            //         </center>
-            //         <br><br>
-            // </div>
-            // </div>
-//             ';
-        
-//     };
-    
-
-// };
-
-// ?>
-</div>
 
 </body>
+
 </html>
+
+                        
